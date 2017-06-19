@@ -1,0 +1,10 @@
+main
+	__CC2D
+	init_display
+	hline
+		set_pixel
+	vline
+		set_pixel
+	set_pixel
+refresh_display
+	set_out
