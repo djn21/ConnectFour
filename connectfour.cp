@@ -1,4 +1,9 @@
-#line 1 "C:/Users/Dejan/Documents/connectfour/connectfour.c"
+#line 1 "D:/Workspaces/MikroC/connectfour/connectfour.c"
+#line 1 "d:/workspaces/mikroc/connectfour/keypad.h"
+#line 7 "d:/workspaces/mikroc/connectfour/keypad.h"
+void init_keypad();
+#line 13 "d:/workspaces/mikroc/connectfour/keypad.h"
+char key_click_keypad();
 #line 1 "c:/users/dejan/documents/connectfour/display.h"
 #line 7 "c:/users/dejan/documents/connectfour/display.h"
 void init_display();
@@ -20,16 +25,26 @@ void hline(unsigned short row, unsigned short column_start, unsigned short colum
 #line 25 "c:/users/dejan/documents/connectfour/graphics.h"
 void vline(unsigned short row_start, unsigned short row_end, unsigned short column,
  Color color);
-#line 4 "C:/Users/Dejan/Documents/connectfour/connectfour.c"
-unsigned short i = 0;
-unsigned short j = 0;
-
+#line 5 "D:/Workspaces/MikroC/connectfour/connectfour.c"
 void main() {
+ char key;
+ init_keypad();
  init_display();
- hline(0, 0, 7, GREEN);
- vline(1, 7, 6, GREEN);
- vline(0, 7, 7, RED);
+ do{
+ do{
+ key = key_click_keypad();
+ }while(key == '\0');
+ if(key >= '0' && key <= '7'){
+ unsigned short i;
+ for(i = 0; i < 8; i++){
+ set_pixel(key - 48, i, GREEN);
+ if(i >= 1){
+ set_pixel(key - 48, i-1, BLACK);
+ }
+ Delay_ms(100);
+ }
+ }else if(key == 'C'){
 
- set_pixel(3, 5, RED);
- set_pixel(4, 5, GREEN);
+ }
+ }while(1);
 }

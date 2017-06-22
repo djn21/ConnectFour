@@ -158,6 +158,7 @@ canspisetoperationmode
 canspiwrite
 ceil
 character8x7
+clear_display
 clkreg
 cmd_status
 compare_double
@@ -303,7 +304,6 @@ halfbits
 hline
 hwdt
 hwdt_bit
-i
 ics_auto
 ics_off
 idl
@@ -314,6 +314,7 @@ ie0_bit
 ie1
 ie1_bit
 init_display
+init_keypad
 int2double
 intel_pwd_exit
 intel_pwd_exit_bit
@@ -342,10 +343,12 @@ ivt_addr_et1
 ivt_addr_et2
 ivt_addr_ex0
 ivt_addr_ex1
-j
+key_click_keypad
 keypad_init
 keypad_key_click
 keypad_key_press
+keypadport
+keys
 labs
 lcd_chr
 lcd_chr_cp

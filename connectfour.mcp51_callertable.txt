@@ -1,10 +1,12 @@
 main
-	__CC2D
+	init_keypad
+		Keypad_Init
 	init_display
-	hline
-		set_pixel
-	vline
-		set_pixel
+	key_click_keypad
+		Keypad_Key_Click
+			Keypad_Key_Press
+				Delay_1us
+			Delay_10us
 	set_pixel
 refresh_display
 	set_out

@@ -48,3 +48,16 @@ void vline(unsigned short row_start, unsigned short row_end, unsigned short colu
           set_pixel(row, column, color);
      }
 }
+
+/******************************************************************************
+* Clear display. Sets all pixels to BLACK.
+******************************************************************************/
+void clear_display(){
+     unsigned short i;
+     unsigned short j;
+     for(i = 0; i < 8; i++){
+           for(j = 0; j < 8; j++){
+                 set_pixel(i, j, BLACK);
+           }
+     }
+}
