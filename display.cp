@@ -24,7 +24,7 @@ void set_out(unsigned char row, unsigned char red, unsigned char green){
  P2 = 0x00;
  P3 = 0x00;
 
- P1 = ~row;
+ P1 = row;
 
  P2 = red;
  P3 = green;

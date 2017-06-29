@@ -21,10 +21,8 @@ _set_out:
 	MOV P2+0, #0
 ;display.c,27 :: 		P3 = 0x00;
 	MOV P3+0, #0
-;display.c,29 :: 		P1 = ~row;
-	MOV A, FARG_set_out_row+0
-	XRL A, #255
-	MOV P1+0, A
+;display.c,29 :: 		P1 = row;
+	MOV P1+0, FARG_set_out_row+0
 ;display.c,31 :: 		P2 = red;
 	MOV P2+0, FARG_set_out_red+0
 ;display.c,32 :: 		P3 = green;

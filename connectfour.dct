@@ -272,6 +272,7 @@ font5x7
 fontsystem5x7_v2
 frexp
 fullbits
+game_mat
 gate0
 gate0_bit
 gate1
@@ -313,8 +314,11 @@ ie0
 ie0_bit
 ie1
 ie1_bit
+init
+init_connectfour
 init_display
 init_keypad
+insert_disc
 int2double
 intel_pwd_exit
 intel_pwd_exit_bit
@@ -484,6 +488,7 @@ p3_7_bit
 pcon
 pd
 pd_bit
+player
 pof
 pof_bit
 pow
@@ -756,6 +761,7 @@ strspn
 strstr
 strtok
 sub_32x32_fp
+switch_player
 system3x5
 t2con
 t2mod
