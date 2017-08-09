@@ -42,7 +42,7 @@ void main() {
         // check winner
         hasWinner = ConnectFour_CheckWinner();
         // has winner
-        /*if(hasWinner){
+        if(hasWinner){
             startTime = Timer_Miliseconds();
             do{
                 stopTime = Timer_Miliseconds();
@@ -66,12 +66,9 @@ void main() {
             ConnectFour_NewGame();
         }
         // has not winner
-        else { */
-        if(hasWinner == 0){ // TODO - Remove this line after code has been uncommented
+        else {
             // switch player
             ConnectFour_SwitchPlayer();
-        }else{ // TODO - Remove this line after code has been uncommented
-            break;
         }
     } while(1);
 }
