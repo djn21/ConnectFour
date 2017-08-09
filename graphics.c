@@ -1,50 +1,76 @@
+/*************************************************************************************************
+* MODULE:    GRAPHICS
+* CONTAINS:  Functions for working with graphic elements
+* COPYRIGHT: Faculty of Electrical Engineering - www.etf.unibl.org
+* VERSION:   1.0, 09-AUG-17
+*************************************************************************************************/
+
 #include <graphics.h>
 
-extern unsigned char mat_red[];
-extern unsigned char mat_green[];
+extern unsigned char gMatrixRed[];
+extern unsigned char gMatrixGreen[];
 
-/******************************************************************************
-*  Sets the pixel of row and column to color specified
-******************************************************************************/
-void set_pixel(unsigned short row, unsigned short column, Color color){
-     switch(color){
-          case BLACK:
-               mat_red[row] = mat_red[row] & ~(1 << column); // clear RED
-               mat_green[row] = mat_green[row] & ~(1 << column); // clear GREEN
-               break;
-          case RED:
-               mat_red[row] = mat_red[row] | (1 << column); // set RED
-               mat_green[row] = mat_green[row] & ~(1 << column); // clear GREEN
-               break;
-          case GREEN:
-               mat_red[row] = mat_red[row] & ~(1 << column); // clear RED
-               mat_green[row] = mat_green[row] | (1 << column); // set GREEN
-               break;
-          case YELLOW:
-               mat_red[row] = mat_red[row] | (1 << column); // set RED
-               mat_green[row] = mat_green[row] | (1 << column); // set GREEN
-               break;
-     }
+/*************************************************************************************************
+* DOES:     Sets the pixel of row and column to color specified
+* GLOBALS:  Modify gMatrixRed, gMatrixGreen
+* RETURNS:  This function does not return value
+*************************************************************************************************/
+void Graphics_SetPixel(unsigned char row, unsigned char column, Color color){
+    switch(color){
+        case COLOR_BLACK:
+            gMatrixRed[column] = gMatrixRed[column] & ~(1 << row); // clear RED
+            gMatrixGreen[column] = gMatrixGreen[column] & ~(1 << row); // clear GREEN
+            break;
+        case COLOR_RED:
+            gMatrixRed[column] = gMatrixRed[column] | (1 << row); // set RED
+            gMatrixGreen[column] = gMatrixGreen[column] & ~(1 << row); // clear GREEN
+            break;
+        case COLOR_GREEN:
+            gMatrixRed[column] = gMatrixRed[column] & ~(1 << row); // clear RED
+            gMatrixGreen[column] = gMatrixGreen[column] | (1 << row); // set GREEN
+            break;
+        case COLOR_YELLOW:
+            gMatrixRed[column] = gMatrixRed[column] | (1 << column); // set RED
+            gMatrixGreen[column] = gMatrixGreen[column] | (1 << column); // set GREEN
+            break;
+    }
 }
 
-/******************************************************************************
-* Draw a horizontal line on a given row from column_start to column_end
-******************************************************************************/
-void hline(unsigned short row, unsigned short column_start, unsigned short column_end,
-     Color color){
-     unsigned short column;
-     for(column = column_start; column <= column_end; column++){
-          set_pixel(row, column, color);
-     }
+/*************************************************************************************************
+* DOES:     Draw a vertical line on a given column from row_start to row_end
+* GLOBALS:  This function does not read or write global variables
+* RETURNS:  This function does not return value
+*************************************************************************************************/
+void Graphics_VerticalLine(unsigned char column, unsigned char row_start,
+        unsigned char row_end, Color color){
+    unsigned char row;
+    for(row = row_start; row <= row_end; row++){
+        Graphics_SetPixel(row, column, color);
+    }
 }
 
-/******************************************************************************
-* Draw a vertical line on a given column form row_star to row_end
-******************************************************************************/
-void vline(unsigned short row_start, unsigned short row_end, unsigned short column,
-     Color color){
-     unsigned short row;
-     for(row = row_start; row <= row_end; row++){
-          set_pixel(row, column, color);
-     }
+/*************************************************************************************************
+* DOES:     Draw a horizontal line on a given row form column_star to column_end
+* GLOBALS:  This function does not read or write global variables
+* RETURNS:  This function does not return value
+*************************************************************************************************/
+void Graphics_HorizontalLine(unsigned char row, unsigned char column_start, 
+        unsigned char column_end, Color color){
+    unsigned char column;
+    for(column = column_start; column <= column_end; column++){
+        Graphics_SetPixel(row, column, color);
+    }
+}
+
+/*************************************************************************************************
+* DOES:     Clear display
+* GLOBALS:  gMatrixRed, gMatrixGreen
+* RETURNS:  This function does not return value
+*************************************************************************************************/
+void Graphics_ClearDisplay(){
+    unsigned char i;
+    for(i = 0; i < 8; i++){
+        gMatrixRed[i] = 0x00;
+        gMatrixGreen[i] = 0x00;
+    }
 }

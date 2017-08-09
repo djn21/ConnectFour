@@ -1,23 +1,23 @@
 
-_set_pixel:
-;graphics.c,9 :: 		void set_pixel(unsigned short row, unsigned short column, Color color){
-;graphics.c,10 :: 		switch(color){
-	LJMP L_set_pixel0
-;graphics.c,11 :: 		case BLACK:
-L_set_pixel2:
-;graphics.c,12 :: 		mat_red[row] = mat_red[row] & ~(1 << column); // clear RED
-	MOV A, #_mat_red+0
-	ADD A, FARG_set_pixel_row+0
+_Graphics_SetPixel:
+;graphics.c,18 :: 		void Graphics_SetPixel(unsigned char row, unsigned char column, Color color){
+;graphics.c,19 :: 		switch(color){
+	LJMP L_Graphics_SetPixel0
+;graphics.c,20 :: 		case COLOR_BLACK:
+L_Graphics_SetPixel2:
+;graphics.c,21 :: 		gMatrixRed[column] = gMatrixRed[column] & ~(1 << row); // clear RED
+	MOV A, #_gMatrixRed+0
+	ADD A, FARG_Graphics_SetPixel_column+0
 	MOV R0, A
-	MOV R2, FARG_set_pixel_column+0
+	MOV R2, FARG_Graphics_SetPixel_row+0
 	MOV A, #1
 	INC R2
-	SJMP L__set_pixel12
-L__set_pixel13:
+	SJMP L__Graphics_SetPixel15
+L__Graphics_SetPixel16:
 	CLR C
 	RLC A
-L__set_pixel12:
-	DJNZ R2, L__set_pixel13
+L__Graphics_SetPixel15:
+	DJNZ R2, L__Graphics_SetPixel16
 	MOV R1, A
 	XRL 1, #255
 	MOV R2, 1
@@ -25,19 +25,19 @@ L__set_pixel12:
 	ANL A, R2
 	MOV R1, A
 	MOV @R0, 1
-;graphics.c,13 :: 		mat_green[row] = mat_green[row] & ~(1 << column); // clear GREEN
-	MOV A, #_mat_green+0
-	ADD A, FARG_set_pixel_row+0
+;graphics.c,22 :: 		gMatrixGreen[column] = gMatrixGreen[column] & ~(1 << row); // clear GREEN
+	MOV A, #_gMatrixGreen+0
+	ADD A, FARG_Graphics_SetPixel_column+0
 	MOV R0, A
-	MOV R2, FARG_set_pixel_column+0
+	MOV R2, FARG_Graphics_SetPixel_row+0
 	MOV A, #1
 	INC R2
-	SJMP L__set_pixel14
-L__set_pixel15:
+	SJMP L__Graphics_SetPixel17
+L__Graphics_SetPixel18:
 	CLR C
 	RLC A
-L__set_pixel14:
-	DJNZ R2, L__set_pixel15
+L__Graphics_SetPixel17:
+	DJNZ R2, L__Graphics_SetPixel18
 	MOV R1, A
 	XRL 1, #255
 	MOV R2, 1
@@ -45,42 +45,42 @@ L__set_pixel14:
 	ANL A, R2
 	MOV R1, A
 	MOV @R0, 1
-;graphics.c,14 :: 		break;
-	LJMP L_set_pixel1
-;graphics.c,15 :: 		case RED:
-L_set_pixel3:
-;graphics.c,16 :: 		mat_red[row] = mat_red[row] | (1 << column); // set RED
-	MOV A, #_mat_red+0
-	ADD A, FARG_set_pixel_row+0
+;graphics.c,23 :: 		break;
+	LJMP L_Graphics_SetPixel1
+;graphics.c,24 :: 		case COLOR_RED:
+L_Graphics_SetPixel3:
+;graphics.c,25 :: 		gMatrixRed[column] = gMatrixRed[column] | (1 << row); // set RED
+	MOV A, #_gMatrixRed+0
+	ADD A, FARG_Graphics_SetPixel_column+0
 	MOV R0, A
-	MOV R2, FARG_set_pixel_column+0
+	MOV R2, FARG_Graphics_SetPixel_row+0
 	MOV A, #1
 	INC R2
-	SJMP L__set_pixel16
-L__set_pixel17:
+	SJMP L__Graphics_SetPixel19
+L__Graphics_SetPixel20:
 	CLR C
 	RLC A
-L__set_pixel16:
-	DJNZ R2, L__set_pixel17
+L__Graphics_SetPixel19:
+	DJNZ R2, L__Graphics_SetPixel20
 	MOV R1, A
 	MOV R2, 1
 	MOV A, @R0
 	ORL A, R2
 	MOV R1, A
 	MOV @R0, 1
-;graphics.c,17 :: 		mat_green[row] = mat_green[row] & ~(1 << column); // clear GREEN
-	MOV A, #_mat_green+0
-	ADD A, FARG_set_pixel_row+0
+;graphics.c,26 :: 		gMatrixGreen[column] = gMatrixGreen[column] & ~(1 << row); // clear GREEN
+	MOV A, #_gMatrixGreen+0
+	ADD A, FARG_Graphics_SetPixel_column+0
 	MOV R0, A
-	MOV R2, FARG_set_pixel_column+0
+	MOV R2, FARG_Graphics_SetPixel_row+0
 	MOV A, #1
 	INC R2
-	SJMP L__set_pixel18
-L__set_pixel19:
+	SJMP L__Graphics_SetPixel21
+L__Graphics_SetPixel22:
 	CLR C
 	RLC A
-L__set_pixel18:
-	DJNZ R2, L__set_pixel19
+L__Graphics_SetPixel21:
+	DJNZ R2, L__Graphics_SetPixel22
 	MOV R1, A
 	XRL 1, #255
 	MOV R2, 1
@@ -88,23 +88,23 @@ L__set_pixel18:
 	ANL A, R2
 	MOV R1, A
 	MOV @R0, 1
-;graphics.c,18 :: 		break;
-	LJMP L_set_pixel1
-;graphics.c,19 :: 		case GREEN:
-L_set_pixel4:
-;graphics.c,20 :: 		mat_red[row] = mat_red[row] & ~(1 << column); // clear RED
-	MOV A, #_mat_red+0
-	ADD A, FARG_set_pixel_row+0
+;graphics.c,27 :: 		break;
+	LJMP L_Graphics_SetPixel1
+;graphics.c,28 :: 		case COLOR_GREEN:
+L_Graphics_SetPixel4:
+;graphics.c,29 :: 		gMatrixRed[column] = gMatrixRed[column] & ~(1 << row); // clear RED
+	MOV A, #_gMatrixRed+0
+	ADD A, FARG_Graphics_SetPixel_column+0
 	MOV R0, A
-	MOV R2, FARG_set_pixel_column+0
+	MOV R2, FARG_Graphics_SetPixel_row+0
 	MOV A, #1
 	INC R2
-	SJMP L__set_pixel20
-L__set_pixel21:
+	SJMP L__Graphics_SetPixel23
+L__Graphics_SetPixel24:
 	CLR C
 	RLC A
-L__set_pixel20:
-	DJNZ R2, L__set_pixel21
+L__Graphics_SetPixel23:
+	DJNZ R2, L__Graphics_SetPixel24
 	MOV R1, A
 	XRL 1, #255
 	MOV R2, 1
@@ -112,132 +112,160 @@ L__set_pixel20:
 	ANL A, R2
 	MOV R1, A
 	MOV @R0, 1
-;graphics.c,21 :: 		mat_green[row] = mat_green[row] | (1 << column); // set GREEN
-	MOV A, #_mat_green+0
-	ADD A, FARG_set_pixel_row+0
+;graphics.c,30 :: 		gMatrixGreen[column] = gMatrixGreen[column] | (1 << row); // set GREEN
+	MOV A, #_gMatrixGreen+0
+	ADD A, FARG_Graphics_SetPixel_column+0
 	MOV R0, A
-	MOV R2, FARG_set_pixel_column+0
+	MOV R2, FARG_Graphics_SetPixel_row+0
 	MOV A, #1
 	INC R2
-	SJMP L__set_pixel22
-L__set_pixel23:
+	SJMP L__Graphics_SetPixel25
+L__Graphics_SetPixel26:
 	CLR C
 	RLC A
-L__set_pixel22:
-	DJNZ R2, L__set_pixel23
+L__Graphics_SetPixel25:
+	DJNZ R2, L__Graphics_SetPixel26
 	MOV R1, A
 	MOV R2, 1
 	MOV A, @R0
 	ORL A, R2
 	MOV R1, A
 	MOV @R0, 1
-;graphics.c,22 :: 		break;
-	SJMP L_set_pixel1
-;graphics.c,23 :: 		case YELLOW:
-L_set_pixel5:
-;graphics.c,24 :: 		mat_red[row] = mat_red[row] | (1 << column); // set RED
-	MOV A, #_mat_red+0
-	ADD A, FARG_set_pixel_row+0
+;graphics.c,31 :: 		break;
+	SJMP L_Graphics_SetPixel1
+;graphics.c,32 :: 		case COLOR_YELLOW:
+L_Graphics_SetPixel5:
+;graphics.c,33 :: 		gMatrixRed[column] = gMatrixRed[column] | (1 << column); // set RED
+	MOV A, #_gMatrixRed+0
+	ADD A, FARG_Graphics_SetPixel_column+0
 	MOV R0, A
-	MOV R2, FARG_set_pixel_column+0
+	MOV R2, FARG_Graphics_SetPixel_column+0
 	MOV A, #1
 	INC R2
-	SJMP L__set_pixel24
-L__set_pixel25:
+	SJMP L__Graphics_SetPixel27
+L__Graphics_SetPixel28:
 	CLR C
 	RLC A
-L__set_pixel24:
-	DJNZ R2, L__set_pixel25
+L__Graphics_SetPixel27:
+	DJNZ R2, L__Graphics_SetPixel28
 	MOV R1, A
 	MOV R2, 1
 	MOV A, @R0
 	ORL A, R2
 	MOV R1, A
 	MOV @R0, 1
-;graphics.c,25 :: 		mat_green[row] = mat_green[row] | (1 << column); // set GREEN
-	MOV A, #_mat_green+0
-	ADD A, FARG_set_pixel_row+0
+;graphics.c,34 :: 		gMatrixGreen[column] = gMatrixGreen[column] | (1 << column); // set GREEN
+	MOV A, #_gMatrixGreen+0
+	ADD A, FARG_Graphics_SetPixel_column+0
 	MOV R0, A
-	MOV R2, FARG_set_pixel_column+0
+	MOV R2, FARG_Graphics_SetPixel_column+0
 	MOV A, #1
 	INC R2
-	SJMP L__set_pixel26
-L__set_pixel27:
+	SJMP L__Graphics_SetPixel29
+L__Graphics_SetPixel30:
 	CLR C
 	RLC A
-L__set_pixel26:
-	DJNZ R2, L__set_pixel27
+L__Graphics_SetPixel29:
+	DJNZ R2, L__Graphics_SetPixel30
 	MOV R1, A
 	MOV R2, 1
 	MOV A, @R0
 	ORL A, R2
 	MOV R1, A
 	MOV @R0, 1
-;graphics.c,26 :: 		break;
-	SJMP L_set_pixel1
-;graphics.c,27 :: 		}
-L_set_pixel0:
-	MOV A, FARG_set_pixel_color+0
+;graphics.c,35 :: 		break;
+	SJMP L_Graphics_SetPixel1
+;graphics.c,36 :: 		}
+L_Graphics_SetPixel0:
+	MOV A, FARG_Graphics_SetPixel_color+0
 	JNZ #3
-	LJMP L_set_pixel2
-	MOV A, FARG_set_pixel_color+0
+	LJMP L_Graphics_SetPixel2
+	MOV A, FARG_Graphics_SetPixel_color+0
 	XRL A, #1
 	JNZ #3
-	LJMP L_set_pixel3
-	MOV A, FARG_set_pixel_color+0
+	LJMP L_Graphics_SetPixel3
+	MOV A, FARG_Graphics_SetPixel_color+0
 	XRL A, #2
 	JNZ #3
-	LJMP L_set_pixel4
-	MOV A, FARG_set_pixel_color+0
+	LJMP L_Graphics_SetPixel4
+	MOV A, FARG_Graphics_SetPixel_color+0
 	XRL A, #3
-	JZ L_set_pixel5
-L_set_pixel1:
-;graphics.c,28 :: 		}
+	JZ L_Graphics_SetPixel5
+L_Graphics_SetPixel1:
+;graphics.c,37 :: 		}
 	RET
-; end of _set_pixel
+; end of _Graphics_SetPixel
 
-_hline:
-;graphics.c,34 :: 		Color color){
-;graphics.c,36 :: 		for(column = column_start; column <= column_end; column++){
-	MOV hline_column_L0+0, FARG_hline_column_start+0
-L_hline6:
-	SETB C
-	MOV A, hline_column_L0+0
-	SUBB A, FARG_hline_column_end+0
-	JNC L_hline7
-;graphics.c,37 :: 		set_pixel(row, column, color);
-	MOV FARG_set_pixel_row+0, FARG_hline_row+0
-	MOV FARG_set_pixel_column+0, hline_column_L0+0
-	MOV FARG_set_pixel_color+0, FARG_hline_color+0
-	LCALL _set_pixel+0
-;graphics.c,36 :: 		for(column = column_start; column <= column_end; column++){
-	INC hline_column_L0+0
-;graphics.c,38 :: 		}
-	SJMP L_hline6
-L_hline7:
-;graphics.c,39 :: 		}
-	RET
-; end of _hline
-
-_vline:
-;graphics.c,45 :: 		Color color){
+_Graphics_VerticalLine:
+;graphics.c,45 :: 		unsigned char row_end, Color color){
 ;graphics.c,47 :: 		for(row = row_start; row <= row_end; row++){
-	MOV vline_row_L0+0, FARG_vline_row_start+0
-L_vline9:
+	MOV Graphics_VerticalLine_row_L0+0, FARG_Graphics_VerticalLine_row_start+0
+L_Graphics_VerticalLine6:
 	SETB C
-	MOV A, vline_row_L0+0
-	SUBB A, FARG_vline_row_end+0
-	JNC L_vline10
-;graphics.c,48 :: 		set_pixel(row, column, color);
-	MOV FARG_set_pixel_row+0, vline_row_L0+0
-	MOV FARG_set_pixel_column+0, FARG_vline_column+0
-	MOV FARG_set_pixel_color+0, FARG_vline_color+0
-	LCALL _set_pixel+0
+	MOV A, Graphics_VerticalLine_row_L0+0
+	SUBB A, FARG_Graphics_VerticalLine_row_end+0
+	JNC L_Graphics_VerticalLine7
+;graphics.c,48 :: 		Graphics_SetPixel(row, column, color);
+	MOV FARG_Graphics_SetPixel_row+0, Graphics_VerticalLine_row_L0+0
+	MOV FARG_Graphics_SetPixel_column+0, FARG_Graphics_VerticalLine_column+0
+	MOV FARG_Graphics_SetPixel_color+0, FARG_Graphics_VerticalLine_color+0
+	LCALL _Graphics_SetPixel+0
 ;graphics.c,47 :: 		for(row = row_start; row <= row_end; row++){
-	INC vline_row_L0+0
+	INC Graphics_VerticalLine_row_L0+0
 ;graphics.c,49 :: 		}
-	SJMP L_vline9
-L_vline10:
+	SJMP L_Graphics_VerticalLine6
+L_Graphics_VerticalLine7:
 ;graphics.c,50 :: 		}
 	RET
-; end of _vline
+; end of _Graphics_VerticalLine
+
+_Graphics_HorizontalLine:
+;graphics.c,58 :: 		unsigned char column_end, Color color){
+;graphics.c,60 :: 		for(column = column_start; column <= column_end; column++){
+	MOV Graphics_HorizontalLine_column_L0+0, FARG_Graphics_HorizontalLine_column_start+0
+L_Graphics_HorizontalLine9:
+	SETB C
+	MOV A, Graphics_HorizontalLine_column_L0+0
+	SUBB A, FARG_Graphics_HorizontalLine_column_end+0
+	JNC L_Graphics_HorizontalLine10
+;graphics.c,61 :: 		Graphics_SetPixel(row, column, color);
+	MOV FARG_Graphics_SetPixel_row+0, FARG_Graphics_HorizontalLine_row+0
+	MOV FARG_Graphics_SetPixel_column+0, Graphics_HorizontalLine_column_L0+0
+	MOV FARG_Graphics_SetPixel_color+0, FARG_Graphics_HorizontalLine_color+0
+	LCALL _Graphics_SetPixel+0
+;graphics.c,60 :: 		for(column = column_start; column <= column_end; column++){
+	INC Graphics_HorizontalLine_column_L0+0
+;graphics.c,62 :: 		}
+	SJMP L_Graphics_HorizontalLine9
+L_Graphics_HorizontalLine10:
+;graphics.c,63 :: 		}
+	RET
+; end of _Graphics_HorizontalLine
+
+_Graphics_ClearDisplay:
+;graphics.c,70 :: 		void Graphics_ClearDisplay(){
+;graphics.c,72 :: 		for(i = 0; i < 8; i++){
+	MOV Graphics_ClearDisplay_i_L0+0, #0
+L_Graphics_ClearDisplay12:
+	CLR C
+	MOV A, Graphics_ClearDisplay_i_L0+0
+	SUBB A, #8
+	JNC L_Graphics_ClearDisplay13
+;graphics.c,73 :: 		gMatrixRed[i] = 0x00;
+	MOV A, #_gMatrixRed+0
+	ADD A, Graphics_ClearDisplay_i_L0+0
+	MOV R0, A
+	MOV @R0, #0
+;graphics.c,74 :: 		gMatrixGreen[i] = 0x00;
+	MOV A, #_gMatrixGreen+0
+	ADD A, Graphics_ClearDisplay_i_L0+0
+	MOV R0, A
+	MOV @R0, #0
+;graphics.c,72 :: 		for(i = 0; i < 8; i++){
+	INC Graphics_ClearDisplay_i_L0+0
+;graphics.c,75 :: 		}
+	SJMP L_Graphics_ClearDisplay12
+L_Graphics_ClearDisplay13:
+;graphics.c,76 :: 		}
+	RET
+; end of _Graphics_ClearDisplay
