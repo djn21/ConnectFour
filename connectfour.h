@@ -1,19 +1,53 @@
+/*************************************************************************************************
+* MODULE:    CONNECTFOUR
+* CONTAINS:  Functions for abstracting connectfour game
+* COPYRIGHT: Faculty of Electrical Engineering - www.etf.unibl.org
+* VERSION:   1.0, 09-AUG-17
+*************************************************************************************************/
+
 #ifndef _CONNECTFOUR_H_
 #define _CONNECTFOUR_H_
 
-/******************************************************************************
-* Initialize connect four game
-******************************************************************************/
-void init_connectfour();
+/*************************************************************************************************
+* DOES:     Initialize connectfour
+* GLOBALS:  Modify mCurrentPlayerColor
+* RETURNS:  This function does not return value
+*************************************************************************************************/
+void ConnectFour_Init();
 
-/******************************************************************************
-* Swiching between RED and YELLOW player
-******************************************************************************/
-void switch_player();
+/*************************************************************************************************
+* DOES:     Swiching between red and yellow player
+* GLOBALS:  Modify mCurrentPlayerColor
+* RETURNS:  This function does not return value
+*************************************************************************************************/
+void ConnectFour_SwitchPlayer();
 
-/******************************************************************************
-*
-******************************************************************************/
-void insert_disc(unsigned short position);
+/*************************************************************************************************
+* DOES:     Insert disc in the appropriate column
+* GLOBALS:  Reads mCurrentPlayerColor. Modify mCurrentPlayerColor, mDiscXPosition, mDiscYPosition
+* RETURNS:  Returns 1 if disc inserted successfully, or 0 if not
+*************************************************************************************************/
+unsigned char ConnectFour_InsertDisc(unsigned char column);
+
+/*************************************************************************************************
+* DOES:     Check for winner
+* GLOBALS:  Reads mGameMatrix, mCurrentPlayerColor. Modify mWinnersDiscsPosition
+* RETURNS:  Returns 1 if somone wins the game, or 0 if not
+*************************************************************************************************/
+unsigned char ConnectFour_CheckWinner();
+
+/*************************************************************************************************
+* DOES:     Set winners discs blinking
+* GLOBALS:  Modify mWinnersDiscsPosition
+* RETURNS:  This function does not return value
+*************************************************************************************************/
+void ConnectForur_TurnWinnersDiscs(unsigned char onOff);
+
+/*************************************************************************************************
+* DOES:     Start new game
+* GLOBALS:  Modify mGameMatrix, mWinnersDiscsPosition
+* RETURNS:  This function does not return value
+*************************************************************************************************/
+void ConnectFour_NewGame();
 
 #endif

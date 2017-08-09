@@ -6,7 +6,7 @@ Value=0
 [BUILD_TYPE]
 Value=0
 [ACTIVE_TAB]
-Value=main.c
+Value=connectfour.c
 [USE_EEPROM]
 Value=0
 [EEPROM_DEFINITION]
@@ -15,11 +15,11 @@ Value=
 Value=1
 [FILES]
 Count=5
-File0=display.c
-File1=graphics.c
-File2=keypad.c
+File0=connectfour.c
+File1=display.c
+File2=graphics.c
 File3=main.c
-File4=connectfour.c
+File4=timer.c
 [BINARIES]
 Count=0
 [IMAGES]
@@ -27,15 +27,15 @@ Count=0
 ActiveImageIndex=-1
 [OPENED_FILES]
 Count=9
-File0=display.h
-File1=display.c
-File2=keypad.c
-File3=keypad.h
-File4=graphics.c
+File0=main.c
+File1=timer.c
+File2=timer.h
+File3=connectfour.c
+File4=connectfour.h
 File5=graphics.h
-File6=connectfour.c
-File7=connectfour.h
-File8=main.c
+File6=graphics.c
+File7=display.c
+File8=display.h
 [EEPROM]
 Count=0
 [ACTIVE_COMMENTS_FILES]
@@ -43,25 +43,19 @@ Count=0
 [OTHER_FILES]
 Count=0
 [SEARCH_PATH]
-Count=7
-Path0=D:\Programs\MikroC\mikroC PRO for 8051\defs\
-Path1=D:\Workspaces\MikroC\connectfour\
-Path2=D:\Programs\MikroC\mikroC PRO for 8051\Uses\ATMEL\
-Path3=C:\Users\Dejan\Documents\connectfour\
-Path4=C:\Users\djekanovic\Documents\Mikroelektronika\mikroC PRO for 8051\defs\
-Path5=C:\Users\djekanovic\Documents\MikroC\connectfour\
-Path6=C:\Users\djekanovic\Documents\Mikroelektronika\mikroC PRO for 8051\Uses\ATMEL\
-[HEADER_PATH]
 Count=3
-Path0=C:\Users\djekanovic\Documents\MikroC\connectfour\
-Path1=C:\Users\Dejan\Documents\connectfour\
+Path0=D:\Programs\MikroC\mikroC PRO for 8051\defs\
+Path1=D:\Programs\MikroC\mikroC PRO for 8051\Uses\ATMEL\
 Path2=D:\Workspaces\MikroC\connectfour\
+[HEADER_PATH]
+Count=1
+Path0=D:\Workspaces\MikroC\connectfour\
 [HEADERS]
 Count=4
-File0=display.h
-File1=keypad.h
+File0=connectfour.h
+File1=display.h
 File2=graphics.h
-File3=connectfour.h
+File3=timer.h
 [PLDS]
 Count=0
 [Useses]
@@ -105,5 +99,4 @@ File35=UART
 [EXPANDED NODES]
 Node1=Sources
 Node2=Header Files
-Node3=Output Files
-Count=3
+Count=2

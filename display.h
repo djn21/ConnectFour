@@ -1,9 +1,18 @@
+/******************************************************************************
+* MODULE:    DISPLAY
+* CONTAINS:  Functions for working with display
+* COPYRIGHT: Faculty of Electrical Engineering - www.etf.unibl.org
+* VERSION:   1.0, 09-AUG-17
+******************************************************************************/
+
 #ifndef _DISPLAY_H_
 #define _DISPLAY_H_
 
 /******************************************************************************
-* Initialize display, set timer 0 to get interrupt at 2 ms (refresh rate)
+* DOES:     Initialize display
+* GLOBALS:  This function does not read or write global variables
+* RETURNS:  This function does not return value
 ******************************************************************************/
-void init_display();
+void Display_Init();
 
 #endif
