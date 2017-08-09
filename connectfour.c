@@ -227,5 +227,5 @@ void ConnectFour_NewGame(){
     // clear display
     Graphics_ClearDisplay();
     // init connectfour
-    ConnectFour_Init;
+    ConnectFour_Init();
 }
