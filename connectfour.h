@@ -25,6 +25,7 @@ void ConnectFour_SwitchPlayer();
 /*************************************************************************************************
 * DOES:     Insert disc in the appropriate column
 * GLOBALS:  Reads mCurrentPlayerColor. Modify mCurrentPlayerColor, mDiscXPosition, mDiscYPosition
+* LIMITS:   Parameter column must be between 1 and 7
 * RETURNS:  Returns 1 if disc inserted successfully, or 0 if not
 *************************************************************************************************/
 unsigned char ConnectFour_InsertDisc(unsigned char column);
@@ -39,6 +40,7 @@ unsigned char ConnectFour_CheckWinner();
 /*************************************************************************************************
 * DOES:     Set winners discs blinking
 * GLOBALS:  Modify mWinnersDiscsPosition
+* LIMITS:   Parameter onOff must be 1 for ON or 0 for OFF
 * RETURNS:  This function does not return value
 *************************************************************************************************/
 void ConnectForur_TurnWinnersDiscs(unsigned char onOff);

@@ -18,6 +18,7 @@ typedef enum Color{
 /*************************************************************************************************
 * DOES:     Sets the pixel of row and column to color specified
 * GLOBALS:  Modify gMatrixRed, gMatrixGreen
+* LIMITS:   Parameters row and column must be between 0 and 7
 * RETURNS:  This function does not return value
 *************************************************************************************************/
 void Graphics_SetPixel(unsigned char row, unsigned char column, Color color);
@@ -25,6 +26,7 @@ void Graphics_SetPixel(unsigned char row, unsigned char column, Color color);
 /*************************************************************************************************
 * DOES:     Draw a vertical line on a given column from row_start to row_end
 * GLOBALS:  This function does not read or write global variables
+* LIMITS:   Parameters column, row_start and row_end must be between 0 and 7
 * RETURNS:  This function does not return value
 *************************************************************************************************/
 void Graphics_VerticalLine(unsigned char column, unsigned char row_start,  
@@ -33,6 +35,7 @@ void Graphics_VerticalLine(unsigned char column, unsigned char row_start,
 /*************************************************************************************************
 * DOES:     Draw a horizontal line on a given row form column_star to column_end
 * GLOBALS:  This function does not read or write global variables
+* LIMITS:   Parameters row, column_start and column_end must be between 0 and 7
 * RETURNS:  This function does not return value
 *************************************************************************************************/
 void Graphics_HorizontalLine(unsigned char row, unsigned char column_start, 
