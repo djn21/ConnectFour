@@ -1,22 +1,21 @@
 main
-	init
-		init_keypad
-			Keypad_Init
-		init_display
-		init_connectfour
-			hline
-				set_pixel
-			vline
-				set_pixel
-	key_click_keypad
-		Keypad_Key_Click
-			Keypad_Key_Press
-				Delay_1us
-			Delay_10us
-	insert_disc
-		set_pixel
-	switch_player
-		vline
-			set_pixel
-refresh_display
-	set_out
+	Init
+		Timer_Init
+		Keypad_Init
+		Display_Init
+		ConnectFour_Init
+			Graphics_HorizontalLine
+				Graphics_SetPixel
+	Keypad_Key_Click
+		Keypad_Key_Press
+			Delay_1us
+		Delay_10us
+	ConnectFour_InsertDisc
+		Graphics_SetPixel
+	ConnectFour_CheckWinner
+	ConnectFour_SwitchPlayer
+		Graphics_HorizontalLine
+			Graphics_SetPixel
+Timer_Tick
+Display_Refresh
+	Display_SetOutput

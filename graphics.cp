@@ -1,69 +1,67 @@
 #line 1 "D:/Workspaces/MikroC/connectfour/graphics.c"
-#line 1 "c:/users/dejan/documents/connectfour/graphics.h"
-
-
-
+#line 1 "d:/workspaces/mikroc/connectfour/graphics.h"
+#line 11 "d:/workspaces/mikroc/connectfour/graphics.h"
 typedef enum Color{
- BLACK,
- RED,
- GREEN,
- YELLOW
+ COLOR_BLACK,
+ COLOR_RED,
+ COLOR_GREEN,
+ COLOR_YELLOW
 } Color;
-#line 14 "c:/users/dejan/documents/connectfour/graphics.h"
-void set_pixel(unsigned short row, unsigned short column, Color color);
-#line 19 "c:/users/dejan/documents/connectfour/graphics.h"
-void hline(unsigned short row, unsigned short column_start, unsigned short column_end,
- Color color);
-#line 25 "c:/users/dejan/documents/connectfour/graphics.h"
-void vline(unsigned short row_start, unsigned short row_end, unsigned short column,
- Color color);
-#line 3 "D:/Workspaces/MikroC/connectfour/graphics.c"
-extern unsigned char mat_red[];
-extern unsigned char mat_green[];
-#line 9 "D:/Workspaces/MikroC/connectfour/graphics.c"
-void set_pixel(unsigned short row, unsigned short column, Color color){
+#line 23 "d:/workspaces/mikroc/connectfour/graphics.h"
+void Graphics_SetPixel(unsigned char row, unsigned char column, Color color);
+#line 30 "d:/workspaces/mikroc/connectfour/graphics.h"
+void Graphics_VerticalLine(unsigned char column, unsigned char row_start,
+ unsigned char row_end, Color color);
+#line 38 "d:/workspaces/mikroc/connectfour/graphics.h"
+void Graphics_HorizontalLine(unsigned char row, unsigned char column_start,
+ unsigned char column_end, Color color);
+#line 46 "d:/workspaces/mikroc/connectfour/graphics.h"
+void Graphics_ClearDisplay();
+#line 10 "D:/Workspaces/MikroC/connectfour/graphics.c"
+extern unsigned char gMatrixRed[];
+extern unsigned char gMatrixGreen[];
+#line 18 "D:/Workspaces/MikroC/connectfour/graphics.c"
+void Graphics_SetPixel(unsigned char row, unsigned char column, Color color){
  switch(color){
- case BLACK:
- mat_red[row] = mat_red[row] & ~(1 << column);
- mat_green[row] = mat_green[row] & ~(1 << column);
+ case COLOR_BLACK:
+ gMatrixRed[column] = gMatrixRed[column] & ~(1 << row);
+ gMatrixGreen[column] = gMatrixGreen[column] & ~(1 << row);
  break;
- case RED:
- mat_red[row] = mat_red[row] | (1 << column);
- mat_green[row] = mat_green[row] & ~(1 << column);
+ case COLOR_RED:
+ gMatrixRed[column] = gMatrixRed[column] | (1 << row);
+ gMatrixGreen[column] = gMatrixGreen[column] & ~(1 << row);
  break;
- case GREEN:
- mat_red[row] = mat_red[row] & ~(1 << column);
- mat_green[row] = mat_green[row] | (1 << column);
+ case COLOR_GREEN:
+ gMatrixRed[column] = gMatrixRed[column] & ~(1 << row);
+ gMatrixGreen[column] = gMatrixGreen[column] | (1 << row);
  break;
- case YELLOW:
- mat_red[row] = mat_red[row] | (1 << column);
- mat_green[row] = mat_green[row] | (1 << column);
+ case COLOR_YELLOW:
+ gMatrixRed[column] = gMatrixRed[column] | (1 << column);
+ gMatrixGreen[column] = gMatrixGreen[column] | (1 << column);
  break;
- }
-}
-#line 33 "D:/Workspaces/MikroC/connectfour/graphics.c"
-void hline(unsigned short row, unsigned short column_start, unsigned short column_end,
- Color color){
- unsigned short column;
- for(column = column_start; column <= column_end; column++){
- set_pixel(row, column, color);
  }
 }
 #line 44 "D:/Workspaces/MikroC/connectfour/graphics.c"
-void vline(unsigned short row_start, unsigned short row_end, unsigned short column,
- Color color){
- unsigned short row;
+void Graphics_VerticalLine(unsigned char column, unsigned char row_start,
+ unsigned char row_end, Color color){
+ unsigned char row;
  for(row = row_start; row <= row_end; row++){
- set_pixel(row, column, color);
+ Graphics_SetPixel(row, column, color);
  }
 }
-#line 55 "D:/Workspaces/MikroC/connectfour/graphics.c"
-void clear_display(){
- unsigned short i;
- unsigned short j;
- for(i = 0; i < 8; i++){
- for(j = 0; j < 8; j++){
- set_pixel(i, j, BLACK);
+#line 57 "D:/Workspaces/MikroC/connectfour/graphics.c"
+void Graphics_HorizontalLine(unsigned char row, unsigned char column_start,
+ unsigned char column_end, Color color){
+ unsigned char column;
+ for(column = column_start; column <= column_end; column++){
+ Graphics_SetPixel(row, column, color);
  }
+}
+#line 70 "D:/Workspaces/MikroC/connectfour/graphics.c"
+void Graphics_ClearDisplay(){
+ unsigned char i;
+ for(i = 0; i < 8; i++){
+ gMatrixRed[i] = 0x00;
+ gMatrixGreen[i] = 0x00;
  }
 }

@@ -1,33 +1,48 @@
+/*************************************************************************************************
+* MODULE:    GRAPHICS
+* CONTAINS:  Functions for working with graphic elements
+* COPYRIGHT: Faculty of Electrical Engineering - www.etf.unibl.org
+* VERSION:   1.0, 09-AUG-17
+*************************************************************************************************/
+
 #ifndef _GRAPHICS_H_
 #define _GRAPHICS_H_
 
 typedef enum Color{
-     BLACK,
-     RED,
-     GREEN,
-     YELLOW
+     COLOR_BLACK,
+     COLOR_RED,
+     COLOR_GREEN,
+     COLOR_YELLOW
 } Color;
 
-/******************************************************************************
-*  Sets the pixel of row and column to color specified
-******************************************************************************/
-void set_pixel(unsigned short row, unsigned short column, Color color);
+/*************************************************************************************************
+* DOES:     Sets the pixel of row and column to color specified
+* GLOBALS:  Modify gMatrixRed, gMatrixGreen
+* RETURNS:  This function does not return value
+*************************************************************************************************/
+void Graphics_SetPixel(unsigned char row, unsigned char column, Color color);
 
-/******************************************************************************
-* Draw a horizontal line on a given row from column_start to column_end
-******************************************************************************/
-void hline(unsigned short row, unsigned short column_start, unsigned short column_end,
-     Color color);
+/*************************************************************************************************
+* DOES:     Draw a vertical line on a given column from row_start to row_end
+* GLOBALS:  This function does not read or write global variables
+* RETURNS:  This function does not return value
+*************************************************************************************************/
+void Graphics_VerticalLine(unsigned char column, unsigned char row_start,  
+        unsigned char row_end, Color color);
 
-/******************************************************************************
-* Draw a vertical line on a given column form row_star to row_end
-******************************************************************************/
-void vline(unsigned short row_start, unsigned short row_end, unsigned short column,
-     Color color);
+/*************************************************************************************************
+* DOES:     Draw a horizontal line on a given row form column_star to column_end
+* GLOBALS:  This function does not read or write global variables
+* RETURNS:  This function does not return value
+*************************************************************************************************/
+void Graphics_HorizontalLine(unsigned char row, unsigned char column_start, 
+        unsigned char column_end, Color color);
 
-/******************************************************************************
-* Clear display. Sets all pixels to BLACK.
-******************************************************************************/
-void clear_display();
+/*************************************************************************************************
+* DOES:     Clear display. Set all pixels to black color
+* GLOBALS:  gMatrixRed, gMatrixGreen
+* RETURNS:  This function does not return value
+*************************************************************************************************/
+void Graphics_ClearDisplay();
 
 #endif
