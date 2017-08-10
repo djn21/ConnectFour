@@ -7,9 +7,9 @@
 
 #include <display.h>
 
-char mRowOutputPort at P1;
-char mRedOutputPort at P2;
-char mGreenOutputPort at P3;
+static char mRowOutputPort at P1;
+static char mRedOutputPort at P2;
+static char mGreenOutputPort at P3;
 
 
 const unsigned gMatrixRow[8] = {0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80};
