@@ -51,7 +51,7 @@ void Display_SetOutput(unsigned char row, unsigned char red, unsigned char green
 
 /******************************************************************************
 * DOES:     Refresh display
-* GLOBALS:  This function does not read or write global variables
+* GLOBALS:  Reads gMatrixRow, gMatrixRed, gMatrixGreen
 * RETURNS:  This function does not return value
 ******************************************************************************/
 void Display_Refresh() iv IVT_ADDR_ET0 {

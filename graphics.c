@@ -67,7 +67,7 @@ void Graphics_HorizontalLine(unsigned char row, unsigned char columnStart,
 
 /*************************************************************************************************
 * DOES:     Clear display
-* GLOBALS:  gMatrixRed, gMatrixGreen
+* GLOBALS:  Modify gMatrixRed, gMatrixGreen
 * RETURNS:  This function does not return value
 *************************************************************************************************/
 void Graphics_ClearDisplay(){
