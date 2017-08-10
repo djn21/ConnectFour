@@ -48,11 +48,11 @@ void main() {
                 stopTime = Timer_Miliseconds();
                 // turn off winners discs  500 ms
                 if(stopTime - startTime < 500){
-                    ConnectForur_TurnWinnersDiscs(0);
+                    ConnectFour_TurnWinnersDiscs(0);
                 }
                 // turn on winners discs 500 ms
                 else if(stopTime - startTime < 1000){
-                    ConnectForur_TurnWinnersDiscs(1);
+                    ConnectFour_TurnWinnersDiscs(1);
                 }
                 // reset time
                 else{
