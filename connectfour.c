@@ -193,14 +193,14 @@ void ConnectForur_TurnWinnersDiscs(unsigned char onOff){
     // turn winners discs off
     if(onOff == 0){
         for(i = 0; i < 4; i++){
-            Graphics_SetPixel(mWinnersDiscsPosition[i][1] + 1, mWinnersDiscsPosition[i][0],
+            Graphics_SetPixel(mWinnersDiscsPosition[i][0], mWinnersDiscsPosition[i][1] + 1,
             COLOR_BLACK);
         }
     }
     // turn winners discs on
     else{
         for(i = 0; i < 4; i++){
-            Graphics_SetPixel(mWinnersDiscsPosition[i][1] + 1, mWinnersDiscsPosition[i][0],
+            Graphics_SetPixel(mWinnersDiscsPosition[i][0], mWinnersDiscsPosition[i][1] + 1,
             mCurrentPlayerColor);
         }
     }
