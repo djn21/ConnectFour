@@ -24,22 +24,22 @@ typedef enum Color{
 void Graphics_SetPixel(unsigned char row, unsigned char column, Color color);
 
 /*************************************************************************************************
-* DOES:     Draw a vertical line on a given column from row_start to row_end
+* DOES:     Draw a vertical line on a given column from rowStart to rowEnd
 * GLOBALS:  This function does not read or write global variables
-* LIMITS:   Parameters column, row_start and row_end must be between 0 and 7
+* LIMITS:   Parameters column, rowStart and rowEnd must be between 0 and 7
 * RETURNS:  This function does not return value
 *************************************************************************************************/
-void Graphics_VerticalLine(unsigned char column, unsigned char row_start,  
-        unsigned char row_end, Color color);
+void Graphics_VerticalLine(unsigned char column, unsigned char rowStart,  
+        unsigned char rowEnd, Color color);
 
 /*************************************************************************************************
-* DOES:     Draw a horizontal line on a given row form column_star to column_end
+* DOES:     Draw a horizontal line on a given row form columnStar to columnEnd
 * GLOBALS:  This function does not read or write global variables
-* LIMITS:   Parameters row, column_start and column_end must be between 0 and 7
+* LIMITS:   Parameters row, columnStart and columnEnd must be between 0 and 7
 * RETURNS:  This function does not return value
 *************************************************************************************************/
-void Graphics_HorizontalLine(unsigned char row, unsigned char column_start, 
-        unsigned char column_end, Color color);
+void Graphics_HorizontalLine(unsigned char row, unsigned char columnStart, 
+        unsigned char columnEnd, Color color);
 
 /*************************************************************************************************
 * DOES:     Clear display. Set all pixels to black color
