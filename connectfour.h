@@ -43,7 +43,7 @@ unsigned char ConnectFour_CheckWinner();
 * LIMITS:   Parameter onOff must be 1 for ON or 0 for OFF
 * RETURNS:  This function does not return value
 *************************************************************************************************/
-void ConnectForur_TurnWinnersDiscs(unsigned char onOff);
+void ConnectFour_TurnWinnersDiscs(unsigned char onOff);
 
 /*************************************************************************************************
 * DOES:     Start new game
