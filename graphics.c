@@ -60,7 +60,7 @@ void Graphics_VerticalLine(unsigned char column, unsigned char rowStart,
 void Graphics_HorizontalLine(unsigned char row, unsigned char columnStart, 
         unsigned char columnEnd, Color color){
     unsigned char column;
-    for(column = column_start; column <= column_end; column++){
+    for(column = columnStart; column <= columnEnd; column++){
         Graphics_SetPixel(row, column, color);
     }
 }
