@@ -39,7 +39,7 @@ unsigned long Timer_Miliseconds(){
 /******************************************************************************
 * DOES:     Increment current time every milisecond
 * GLOBALS:  Modify mMiliseconds
-* Returns:  This function does not return value
+* RETURNS:  This function does not return value
 ******************************************************************************/
 void Timer_Tick() iv IVT_ADDR_ET1 {
     // stop timer
