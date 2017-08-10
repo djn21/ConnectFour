@@ -11,7 +11,7 @@ static unsigned long mMiliseconds;
 
 /******************************************************************************
 * DOES:     Initialize and start timer
-* GLOBALS:  This function does not read or write global variables
+* GLOBALS:  Modify mMiliseconds
 * RETURNS:  This function does not return value
 ******************************************************************************/
 void Timer_Init(){
