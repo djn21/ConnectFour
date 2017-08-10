@@ -6,7 +6,7 @@
 char keypadPort at P0;
 
 const char keys[17] = {'\0', '1', '2', '3', 'A', '4', '5', '6', 'B',
-                              '7', '8', '9', 'C' ,'*', '0', '#', 'D'};
+                       '7', '8', '9', 'C' ,'*', '0', '#', 'D'};
 
 void Init(){
     Timer_Init();
@@ -71,4 +71,5 @@ void main() {
             ConnectFour_SwitchPlayer();
         }
     } while(1);
+
 }
