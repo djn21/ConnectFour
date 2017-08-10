@@ -7,9 +7,9 @@
 
 #include <display.h>
 
-char mRowOutout at P1;
-char mRedOutput at P2;
-char mGreenOutput at P3;
+char mRowOutputPort at P1;
+char mRedOutputPort at P2;
+char mGreenOutputPort at P3;
 
 
 const unsigned gMatrixRow[8] = {0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80};
@@ -40,13 +40,13 @@ void Display_Init(){
 ******************************************************************************/
 void Display_SetOutput(unsigned char row, unsigned char red, unsigned char green){
     // turn of colors to avoid ghosts
-    mRedOutput = 0x00;
-    mGreenOutput = 0x00;
+    mRedOutputPort = 0x00;
+    mGreenOutputPort = 0x00;
     // set row
-    mRowOutout = row;
+    mRowOutputPort = row;
     // set colors
-    mRedOutput = red;
-    mGreenOutput = green;
+    mRedOutputPort = red;
+    mGreenOutputPort = green;
 }
 
 /******************************************************************************
