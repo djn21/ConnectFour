@@ -39,14 +39,13 @@ void Display_Init(){
 * RETURNS:  This function does not return value
 ******************************************************************************/
 void Display_SetOutput(unsigned char row, unsigned char red, unsigned char green){
-    // turn of colors to avoid ghosts
-    mRedOutputPort = 0x00;
-    mGreenOutputPort = 0x00;
-    // set row
-    mRowOutputPort = row;
+    // turn of row to avoid ghosts
+    mRowOutputPort = 0x00;
     // set colors
     mRedOutputPort = red;
     mGreenOutputPort = green;
+    // set row
+    mRowOutputPort = row;
 }
 
 /******************************************************************************
