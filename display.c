@@ -12,7 +12,7 @@ static char mRedOutputPort at P2;
 static char mGreenOutputPort at P3;
 
 
-const unsigned gMatrixRow[8] = {0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80};
+const unsigned char gMatrixRow[8] = {0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80};
 unsigned char gMatrixRed[8] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
 unsigned char gMatrixGreen[8] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
 
@@ -39,14 +39,13 @@ void Display_Init(){
 * RETURNS:  This function does not return value
 ******************************************************************************/
 void Display_SetOutput(unsigned char row, unsigned char red, unsigned char green){
-    // turn of colors to avoid ghosts
-    mRedOutputPort = 0x00;
-    mGreenOutputPort = 0x00;
-    // set row
-    mRowOutputPort = row;
+    // turn of row to avoid ghosts
+    mRowOutputPort = 0x00;
     // set colors
     mRedOutputPort = red;
     mGreenOutputPort = green;
+    // set row
+    mRowOutputPort = row;
 }
 
 /******************************************************************************
