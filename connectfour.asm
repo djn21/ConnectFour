@@ -5,8 +5,8 @@ _ConnectFour_Init:
 	MOV connectfour_mCurrentPlayerColor+0, #1
 ;connectfour.c,32 :: 		Graphics_HorizontalLine(7, 0, 7, COLOR_RED);
 	MOV FARG_Graphics_HorizontalLine_row+0, #7
-	MOV FARG_Graphics_HorizontalLine_column_start+0, #0
-	MOV FARG_Graphics_HorizontalLine_column_end+0, #7
+	MOV FARG_Graphics_HorizontalLine_columnStart+0, #0
+	MOV FARG_Graphics_HorizontalLine_columnEnd+0, #7
 	MOV FARG_Graphics_HorizontalLine_color+0, #1
 	LCALL _Graphics_HorizontalLine+0
 ;connectfour.c,33 :: 		}
@@ -23,8 +23,8 @@ _ConnectFour_SwitchPlayer:
 	MOV connectfour_mCurrentPlayerColor+0, #2
 ;connectfour.c,43 :: 		Graphics_HorizontalLine(7, 0, 7, COLOR_GREEN);
 	MOV FARG_Graphics_HorizontalLine_row+0, #7
-	MOV FARG_Graphics_HorizontalLine_column_start+0, #0
-	MOV FARG_Graphics_HorizontalLine_column_end+0, #7
+	MOV FARG_Graphics_HorizontalLine_columnStart+0, #0
+	MOV FARG_Graphics_HorizontalLine_columnEnd+0, #7
 	MOV FARG_Graphics_HorizontalLine_color+0, #2
 	LCALL _Graphics_HorizontalLine+0
 ;connectfour.c,44 :: 		}else if(mCurrentPlayerColor == COLOR_GREEN){
@@ -37,8 +37,8 @@ L_ConnectFour_SwitchPlayer0:
 	MOV connectfour_mCurrentPlayerColor+0, #1
 ;connectfour.c,46 :: 		Graphics_HorizontalLine(7, 0, 7, COLOR_RED);
 	MOV FARG_Graphics_HorizontalLine_row+0, #7
-	MOV FARG_Graphics_HorizontalLine_column_start+0, #0
-	MOV FARG_Graphics_HorizontalLine_column_end+0, #7
+	MOV FARG_Graphics_HorizontalLine_columnStart+0, #0
+	MOV FARG_Graphics_HorizontalLine_columnEnd+0, #7
 	MOV FARG_Graphics_HorizontalLine_color+0, #1
 	LCALL _Graphics_HorizontalLine+0
 ;connectfour.c,47 :: 		}
@@ -49,8 +49,8 @@ L_ConnectFour_SwitchPlayer1:
 ; end of _ConnectFour_SwitchPlayer
 
 _ConnectFour_InsertDisc:
-;connectfour.c,55 :: 		unsigned char ConnectFour_InsertDisc(unsigned char column){
-;connectfour.c,59 :: 		for(i = 5; i >= 0; i--){
+;connectfour.c,56 :: 		unsigned char ConnectFour_InsertDisc(unsigned char column){
+;connectfour.c,60 :: 		for(i = 5; i >= 0; i--){
 	MOV ConnectFour_InsertDisc_i_L0+0, #5
 L_ConnectFour_InsertDisc3:
 	CLR C
@@ -61,7 +61,7 @@ L_ConnectFour_InsertDisc3:
 	XRL A, #128
 	SUBB A, R0
 	JC L_ConnectFour_InsertDisc4
-;connectfour.c,60 :: 		if(mGameMatrix[i][column - 1] == COLOR_BLACK){
+;connectfour.c,61 :: 		if(mGameMatrix[i][column - 1] == COLOR_BLACK){
 	MOV B+0, ConnectFour_InsertDisc_i_L0+0
 	MOV A, #7
 	MUL AB
@@ -82,7 +82,7 @@ L_ConnectFour_InsertDisc3:
 	MOV 1, @R0
 	MOV A, R1
 	JNZ L_ConnectFour_InsertDisc6
-;connectfour.c,61 :: 		mGameMatrix[i][column - 1] = mCurrentPlayerColor;
+;connectfour.c,62 :: 		mGameMatrix[i][column - 1] = mCurrentPlayerColor;
 	MOV B+0, ConnectFour_InsertDisc_i_L0+0
 	MOV A, #7
 	MUL AB
@@ -101,23 +101,23 @@ L_ConnectFour_InsertDisc3:
 	ADD A, R0
 	MOV R0, A
 	MOV @R0, connectfour_mCurrentPlayerColor+0
-;connectfour.c,62 :: 		mDiscXPostition = i;
+;connectfour.c,63 :: 		mDiscXPostition = i;
 	MOV connectfour_mDiscXPostition+0, ConnectFour_InsertDisc_i_L0+0
-;connectfour.c,63 :: 		mDiscYPosition = column - 1;
+;connectfour.c,64 :: 		mDiscYPosition = column - 1;
 	CLR C
 	MOV A, FARG_ConnectFour_InsertDisc_column+0
 	SUBB A, #1
 	MOV connectfour_mDiscYPosition+0, A
-;connectfour.c,64 :: 		break;
+;connectfour.c,65 :: 		break;
 	SJMP L_ConnectFour_InsertDisc4
-;connectfour.c,65 :: 		}
-L_ConnectFour_InsertDisc6:
-;connectfour.c,59 :: 		for(i = 5; i >= 0; i--){
-	DEC ConnectFour_InsertDisc_i_L0+0
 ;connectfour.c,66 :: 		}
+L_ConnectFour_InsertDisc6:
+;connectfour.c,60 :: 		for(i = 5; i >= 0; i--){
+	DEC ConnectFour_InsertDisc_i_L0+0
+;connectfour.c,67 :: 		}
 	SJMP L_ConnectFour_InsertDisc3
 L_ConnectFour_InsertDisc4:
-;connectfour.c,68 :: 		for(j = 0; j < i; j++){
+;connectfour.c,69 :: 		for(j = 0; j < i; j++){
 	MOV ConnectFour_InsertDisc_j_L0+0, #0
 L_ConnectFour_InsertDisc7:
 	CLR C
@@ -128,28 +128,28 @@ L_ConnectFour_InsertDisc7:
 	XRL A, #128
 	SUBB A, R0
 	JNC L_ConnectFour_InsertDisc8
-;connectfour.c,69 :: 		Graphics_SetPixel(j, column, mCurrentPlayerColor);
+;connectfour.c,70 :: 		Graphics_SetPixel(j, column, mCurrentPlayerColor);
 	MOV FARG_Graphics_SetPixel_row+0, ConnectFour_InsertDisc_j_L0+0
 	MOV FARG_Graphics_SetPixel_column+0, FARG_ConnectFour_InsertDisc_column+0
 	MOV FARG_Graphics_SetPixel_color+0, connectfour_mCurrentPlayerColor+0
 	LCALL _Graphics_SetPixel+0
-;connectfour.c,70 :: 		Delay_ms(100);
+;connectfour.c,71 :: 		Delay_ms(100);
 	MOV R6, 163
 	MOV R7, 30
 	DJNZ R7, 
 	DJNZ R6, 
 	NOP
-;connectfour.c,71 :: 		Graphics_SetPixel(j, column, COLOR_BLACK);
+;connectfour.c,72 :: 		Graphics_SetPixel(j, column, COLOR_BLACK);
 	MOV FARG_Graphics_SetPixel_row+0, ConnectFour_InsertDisc_j_L0+0
 	MOV FARG_Graphics_SetPixel_column+0, FARG_ConnectFour_InsertDisc_column+0
 	MOV FARG_Graphics_SetPixel_color+0, #0
 	LCALL _Graphics_SetPixel+0
-;connectfour.c,68 :: 		for(j = 0; j < i; j++){
+;connectfour.c,69 :: 		for(j = 0; j < i; j++){
 	INC ConnectFour_InsertDisc_j_L0+0
-;connectfour.c,72 :: 		}
+;connectfour.c,73 :: 		}
 	SJMP L_ConnectFour_InsertDisc7
 L_ConnectFour_InsertDisc8:
-;connectfour.c,74 :: 		if(i >= 0){
+;connectfour.c,75 :: 		if(i >= 0){
 	CLR C
 	MOV A, #0
 	XRL A, #128
@@ -158,34 +158,34 @@ L_ConnectFour_InsertDisc8:
 	XRL A, #128
 	SUBB A, R0
 	JC L_ConnectFour_InsertDisc10
-;connectfour.c,75 :: 		Graphics_SetPixel(i, column, mCurrentPlayerColor);
+;connectfour.c,76 :: 		Graphics_SetPixel(i, column, mCurrentPlayerColor);
 	MOV FARG_Graphics_SetPixel_row+0, ConnectFour_InsertDisc_i_L0+0
 	MOV FARG_Graphics_SetPixel_column+0, FARG_ConnectFour_InsertDisc_column+0
 	MOV FARG_Graphics_SetPixel_color+0, connectfour_mCurrentPlayerColor+0
 	LCALL _Graphics_SetPixel+0
-;connectfour.c,76 :: 		return 1;
+;connectfour.c,77 :: 		return 1;
 	MOV R0, #1
 	RET
-;connectfour.c,77 :: 		}else{
+;connectfour.c,78 :: 		}else{
 L_ConnectFour_InsertDisc10:
-;connectfour.c,78 :: 		return 0;
+;connectfour.c,79 :: 		return 0;
 	MOV R0, #0
-;connectfour.c,80 :: 		}
+;connectfour.c,81 :: 		}
 	RET
 ; end of _ConnectFour_InsertDisc
 
 _ConnectFour_CheckWinner:
-;connectfour.c,87 :: 		unsigned char ConnectFour_CheckWinner(){
-;connectfour.c,90 :: 		unsigned char hits = 0;
+;connectfour.c,88 :: 		unsigned char ConnectFour_CheckWinner(){
+;connectfour.c,91 :: 		unsigned char hits = 0;
 	MOV ConnectFour_CheckWinner_hits_L0+0, #0
-;connectfour.c,92 :: 		for(j = mDiscYPosition; j >= 0; j--){
+;connectfour.c,93 :: 		for(j = mDiscYPosition; j >= 0; j--){
 	MOV ConnectFour_CheckWinner_j_L0+0, connectfour_mDiscYPosition+0
 L_ConnectFour_CheckWinner12:
 	CLR C
 	MOV A, ConnectFour_CheckWinner_j_L0+0
 	SUBB A, #0
 	JC L_ConnectFour_CheckWinner13
-;connectfour.c,93 :: 		if(mGameMatrix[mDiscXPostition][j] == mCurrentPlayerColor){
+;connectfour.c,94 :: 		if(mGameMatrix[mDiscXPostition][j] == mCurrentPlayerColor){
 	MOV B+0, connectfour_mDiscXPostition+0
 	MOV A, #7
 	MUL AB
@@ -199,7 +199,7 @@ L_ConnectFour_CheckWinner12:
 	MOV A, R1
 	XRL A, connectfour_mCurrentPlayerColor+0
 	JNZ L_ConnectFour_CheckWinner15
-;connectfour.c,94 :: 		mWinnersDiscsPosition[hits][0] = mDiscXPostition;
+;connectfour.c,95 :: 		mWinnersDiscsPosition[hits][0] = mDiscXPostition;
 	MOV R1, #1
 	MOV A, ConnectFour_CheckWinner_hits_L0+0
 	INC R1
@@ -214,7 +214,7 @@ L__ConnectFour_CheckWinner86:
 	ADD A, R0
 	MOV R0, A
 	MOV @R0, connectfour_mDiscXPostition+0
-;connectfour.c,95 :: 		mWinnersDiscsPosition[hits][1] = j;
+;connectfour.c,96 :: 		mWinnersDiscsPosition[hits][1] = j;
 	MOV R1, #1
 	MOV A, ConnectFour_CheckWinner_hits_L0+0
 	INC R1
@@ -230,29 +230,29 @@ L__ConnectFour_CheckWinner88:
 	MOV R0, A
 	INC R0
 	MOV @R0, ConnectFour_CheckWinner_j_L0+0
-;connectfour.c,96 :: 		if(++hits == 4){
+;connectfour.c,97 :: 		if(++hits == 4){
 	INC ConnectFour_CheckWinner_hits_L0+0
 	MOV A, ConnectFour_CheckWinner_hits_L0+0
 	XRL A, #4
 	JNZ L_ConnectFour_CheckWinner16
-;connectfour.c,97 :: 		return 1;
+;connectfour.c,98 :: 		return 1;
 	MOV R0, #1
 	RET
-;connectfour.c,98 :: 		}
+;connectfour.c,99 :: 		}
 L_ConnectFour_CheckWinner16:
-;connectfour.c,99 :: 		}else{
+;connectfour.c,100 :: 		}else{
 	SJMP L_ConnectFour_CheckWinner17
 L_ConnectFour_CheckWinner15:
-;connectfour.c,100 :: 		break;
+;connectfour.c,101 :: 		break;
 	SJMP L_ConnectFour_CheckWinner13
-;connectfour.c,101 :: 		}
-L_ConnectFour_CheckWinner17:
-;connectfour.c,92 :: 		for(j = mDiscYPosition; j >= 0; j--){
-	DEC ConnectFour_CheckWinner_j_L0+0
 ;connectfour.c,102 :: 		}
+L_ConnectFour_CheckWinner17:
+;connectfour.c,93 :: 		for(j = mDiscYPosition; j >= 0; j--){
+	DEC ConnectFour_CheckWinner_j_L0+0
+;connectfour.c,103 :: 		}
 	SJMP L_ConnectFour_CheckWinner12
 L_ConnectFour_CheckWinner13:
-;connectfour.c,104 :: 		for(j = mDiscYPosition + 1; j < 7; j++){
+;connectfour.c,105 :: 		for(j = mDiscYPosition + 1; j < 7; j++){
 	MOV A, connectfour_mDiscYPosition+0
 	ADD A, #1
 	MOV ConnectFour_CheckWinner_j_L0+0, A
@@ -261,7 +261,7 @@ L_ConnectFour_CheckWinner18:
 	MOV A, ConnectFour_CheckWinner_j_L0+0
 	SUBB A, #7
 	JNC L_ConnectFour_CheckWinner19
-;connectfour.c,105 :: 		if(mGameMatrix[mDiscXPostition][j] == mCurrentPlayerColor){
+;connectfour.c,106 :: 		if(mGameMatrix[mDiscXPostition][j] == mCurrentPlayerColor){
 	MOV B+0, connectfour_mDiscXPostition+0
 	MOV A, #7
 	MUL AB
@@ -275,7 +275,7 @@ L_ConnectFour_CheckWinner18:
 	MOV A, R1
 	XRL A, connectfour_mCurrentPlayerColor+0
 	JNZ L_ConnectFour_CheckWinner21
-;connectfour.c,106 :: 		mWinnersDiscsPosition[hits][0] = mDiscXPostition;
+;connectfour.c,107 :: 		mWinnersDiscsPosition[hits][0] = mDiscXPostition;
 	MOV R1, #1
 	MOV A, ConnectFour_CheckWinner_hits_L0+0
 	INC R1
@@ -290,7 +290,7 @@ L__ConnectFour_CheckWinner90:
 	ADD A, R0
 	MOV R0, A
 	MOV @R0, connectfour_mDiscXPostition+0
-;connectfour.c,107 :: 		mWinnersDiscsPosition[hits][1] = j;
+;connectfour.c,108 :: 		mWinnersDiscsPosition[hits][1] = j;
 	MOV R1, #1
 	MOV A, ConnectFour_CheckWinner_hits_L0+0
 	INC R1
@@ -306,31 +306,31 @@ L__ConnectFour_CheckWinner92:
 	MOV R0, A
 	INC R0
 	MOV @R0, ConnectFour_CheckWinner_j_L0+0
-;connectfour.c,108 :: 		if(++hits == 4){
+;connectfour.c,109 :: 		if(++hits == 4){
 	INC ConnectFour_CheckWinner_hits_L0+0
 	MOV A, ConnectFour_CheckWinner_hits_L0+0
 	XRL A, #4
 	JNZ L_ConnectFour_CheckWinner22
-;connectfour.c,109 :: 		return 1;
+;connectfour.c,110 :: 		return 1;
 	MOV R0, #1
 	RET
-;connectfour.c,110 :: 		}
+;connectfour.c,111 :: 		}
 L_ConnectFour_CheckWinner22:
-;connectfour.c,111 :: 		}else{
+;connectfour.c,112 :: 		}else{
 	SJMP L_ConnectFour_CheckWinner23
 L_ConnectFour_CheckWinner21:
-;connectfour.c,112 :: 		break;
+;connectfour.c,113 :: 		break;
 	SJMP L_ConnectFour_CheckWinner19
-;connectfour.c,113 :: 		}
-L_ConnectFour_CheckWinner23:
-;connectfour.c,104 :: 		for(j = mDiscYPosition + 1; j < 7; j++){
-	INC ConnectFour_CheckWinner_j_L0+0
 ;connectfour.c,114 :: 		}
+L_ConnectFour_CheckWinner23:
+;connectfour.c,105 :: 		for(j = mDiscYPosition + 1; j < 7; j++){
+	INC ConnectFour_CheckWinner_j_L0+0
+;connectfour.c,115 :: 		}
 	SJMP L_ConnectFour_CheckWinner18
 L_ConnectFour_CheckWinner19:
-;connectfour.c,116 :: 		hits = 0;
+;connectfour.c,117 :: 		hits = 0;
 	MOV ConnectFour_CheckWinner_hits_L0+0, #0
-;connectfour.c,118 :: 		for(i = mDiscXPostition, j = mDiscYPosition; i < 6 && j >= 0; i++, j--){
+;connectfour.c,119 :: 		for(i = mDiscXPostition, j = mDiscYPosition; i < 6 && j >= 0; i++, j--){
 	MOV ConnectFour_CheckWinner_i_L0+0, connectfour_mDiscXPostition+0
 	MOV ConnectFour_CheckWinner_j_L0+0, connectfour_mDiscYPosition+0
 L_ConnectFour_CheckWinner24:
@@ -343,7 +343,7 @@ L_ConnectFour_CheckWinner24:
 	SUBB A, #0
 	JC L_ConnectFour_CheckWinner25
 L__ConnectFour_CheckWinner85:
-;connectfour.c,119 :: 		if(mGameMatrix[i][j] == mCurrentPlayerColor){
+;connectfour.c,120 :: 		if(mGameMatrix[i][j] == mCurrentPlayerColor){
 	MOV B+0, ConnectFour_CheckWinner_i_L0+0
 	MOV A, #7
 	MUL AB
@@ -357,7 +357,7 @@ L__ConnectFour_CheckWinner85:
 	MOV A, R1
 	XRL A, connectfour_mCurrentPlayerColor+0
 	JNZ L_ConnectFour_CheckWinner29
-;connectfour.c,120 :: 		mWinnersDiscsPosition[hits][0] = i;
+;connectfour.c,121 :: 		mWinnersDiscsPosition[hits][0] = i;
 	MOV R1, #1
 	MOV A, ConnectFour_CheckWinner_hits_L0+0
 	INC R1
@@ -372,7 +372,7 @@ L__ConnectFour_CheckWinner94:
 	ADD A, R0
 	MOV R0, A
 	MOV @R0, ConnectFour_CheckWinner_i_L0+0
-;connectfour.c,121 :: 		mWinnersDiscsPosition[hits][1] = j;
+;connectfour.c,122 :: 		mWinnersDiscsPosition[hits][1] = j;
 	MOV R1, #1
 	MOV A, ConnectFour_CheckWinner_hits_L0+0
 	INC R1
@@ -388,30 +388,30 @@ L__ConnectFour_CheckWinner96:
 	MOV R0, A
 	INC R0
 	MOV @R0, ConnectFour_CheckWinner_j_L0+0
-;connectfour.c,122 :: 		if(++hits == 4){
+;connectfour.c,123 :: 		if(++hits == 4){
 	INC ConnectFour_CheckWinner_hits_L0+0
 	MOV A, ConnectFour_CheckWinner_hits_L0+0
 	XRL A, #4
 	JNZ L_ConnectFour_CheckWinner30
-;connectfour.c,123 :: 		return 1;
+;connectfour.c,124 :: 		return 1;
 	MOV R0, #1
 	RET
-;connectfour.c,124 :: 		}
+;connectfour.c,125 :: 		}
 L_ConnectFour_CheckWinner30:
-;connectfour.c,125 :: 		}else{
+;connectfour.c,126 :: 		}else{
 	SJMP L_ConnectFour_CheckWinner31
 L_ConnectFour_CheckWinner29:
-;connectfour.c,126 :: 		break;
+;connectfour.c,127 :: 		break;
 	SJMP L_ConnectFour_CheckWinner25
-;connectfour.c,127 :: 		}
+;connectfour.c,128 :: 		}
 L_ConnectFour_CheckWinner31:
-;connectfour.c,118 :: 		for(i = mDiscXPostition, j = mDiscYPosition; i < 6 && j >= 0; i++, j--){
+;connectfour.c,119 :: 		for(i = mDiscXPostition, j = mDiscYPosition; i < 6 && j >= 0; i++, j--){
 	INC ConnectFour_CheckWinner_i_L0+0
 	DEC ConnectFour_CheckWinner_j_L0+0
-;connectfour.c,128 :: 		}
+;connectfour.c,129 :: 		}
 	SJMP L_ConnectFour_CheckWinner24
 L_ConnectFour_CheckWinner25:
-;connectfour.c,130 :: 		for(i = mDiscXPostition - 1, j = mDiscYPosition + 1; i >= 0 && j < 7; i--, j++){
+;connectfour.c,131 :: 		for(i = mDiscXPostition - 1, j = mDiscYPosition + 1; i >= 0 && j < 7; i--, j++){
 	CLR C
 	MOV A, connectfour_mDiscXPostition+0
 	SUBB A, #1
@@ -429,7 +429,7 @@ L_ConnectFour_CheckWinner32:
 	SUBB A, #7
 	JNC L_ConnectFour_CheckWinner33
 L__ConnectFour_CheckWinner84:
-;connectfour.c,131 :: 		if(mGameMatrix[i][j] == mCurrentPlayerColor){
+;connectfour.c,132 :: 		if(mGameMatrix[i][j] == mCurrentPlayerColor){
 	MOV B+0, ConnectFour_CheckWinner_i_L0+0
 	MOV A, #7
 	MUL AB
@@ -443,7 +443,7 @@ L__ConnectFour_CheckWinner84:
 	MOV A, R1
 	XRL A, connectfour_mCurrentPlayerColor+0
 	JNZ L_ConnectFour_CheckWinner37
-;connectfour.c,132 :: 		mWinnersDiscsPosition[hits][0] = i;
+;connectfour.c,133 :: 		mWinnersDiscsPosition[hits][0] = i;
 	MOV R1, #1
 	MOV A, ConnectFour_CheckWinner_hits_L0+0
 	INC R1
@@ -458,7 +458,7 @@ L__ConnectFour_CheckWinner98:
 	ADD A, R0
 	MOV R0, A
 	MOV @R0, ConnectFour_CheckWinner_i_L0+0
-;connectfour.c,133 :: 		mWinnersDiscsPosition[hits][1] = j;
+;connectfour.c,134 :: 		mWinnersDiscsPosition[hits][1] = j;
 	MOV R1, #1
 	MOV A, ConnectFour_CheckWinner_hits_L0+0
 	INC R1
@@ -474,32 +474,32 @@ L__ConnectFour_CheckWinner100:
 	MOV R0, A
 	INC R0
 	MOV @R0, ConnectFour_CheckWinner_j_L0+0
-;connectfour.c,134 :: 		if(++hits == 4){
+;connectfour.c,135 :: 		if(++hits == 4){
 	INC ConnectFour_CheckWinner_hits_L0+0
 	MOV A, ConnectFour_CheckWinner_hits_L0+0
 	XRL A, #4
 	JNZ L_ConnectFour_CheckWinner38
-;connectfour.c,135 :: 		return 1;
+;connectfour.c,136 :: 		return 1;
 	MOV R0, #1
 	RET
-;connectfour.c,136 :: 		}
+;connectfour.c,137 :: 		}
 L_ConnectFour_CheckWinner38:
-;connectfour.c,137 :: 		}else{
+;connectfour.c,138 :: 		}else{
 	SJMP L_ConnectFour_CheckWinner39
 L_ConnectFour_CheckWinner37:
-;connectfour.c,138 :: 		break;
+;connectfour.c,139 :: 		break;
 	SJMP L_ConnectFour_CheckWinner33
-;connectfour.c,139 :: 		}
+;connectfour.c,140 :: 		}
 L_ConnectFour_CheckWinner39:
-;connectfour.c,130 :: 		for(i = mDiscXPostition - 1, j = mDiscYPosition + 1; i >= 0 && j < 7; i--, j++){
+;connectfour.c,131 :: 		for(i = mDiscXPostition - 1, j = mDiscYPosition + 1; i >= 0 && j < 7; i--, j++){
 	DEC ConnectFour_CheckWinner_i_L0+0
 	INC ConnectFour_CheckWinner_j_L0+0
-;connectfour.c,140 :: 		}
+;connectfour.c,141 :: 		}
 	SJMP L_ConnectFour_CheckWinner32
 L_ConnectFour_CheckWinner33:
-;connectfour.c,142 :: 		hits = 0;
+;connectfour.c,143 :: 		hits = 0;
 	MOV ConnectFour_CheckWinner_hits_L0+0, #0
-;connectfour.c,144 :: 		for(i = mDiscXPostition, j = mDiscYPosition; i >= 0 && j >= 0; i--, j--){
+;connectfour.c,145 :: 		for(i = mDiscXPostition, j = mDiscYPosition; i >= 0 && j >= 0; i--, j--){
 	MOV ConnectFour_CheckWinner_i_L0+0, connectfour_mDiscXPostition+0
 	MOV ConnectFour_CheckWinner_j_L0+0, connectfour_mDiscYPosition+0
 L_ConnectFour_CheckWinner40:
@@ -512,7 +512,7 @@ L_ConnectFour_CheckWinner40:
 	SUBB A, #0
 	JC L_ConnectFour_CheckWinner41
 L__ConnectFour_CheckWinner83:
-;connectfour.c,145 :: 		if(mGameMatrix[i][j] == mCurrentPlayerColor){
+;connectfour.c,146 :: 		if(mGameMatrix[i][j] == mCurrentPlayerColor){
 	MOV B+0, ConnectFour_CheckWinner_i_L0+0
 	MOV A, #7
 	MUL AB
@@ -526,7 +526,7 @@ L__ConnectFour_CheckWinner83:
 	MOV A, R1
 	XRL A, connectfour_mCurrentPlayerColor+0
 	JNZ L_ConnectFour_CheckWinner45
-;connectfour.c,146 :: 		mWinnersDiscsPosition[hits][0] = i;
+;connectfour.c,147 :: 		mWinnersDiscsPosition[hits][0] = i;
 	MOV R1, #1
 	MOV A, ConnectFour_CheckWinner_hits_L0+0
 	INC R1
@@ -541,7 +541,7 @@ L__ConnectFour_CheckWinner102:
 	ADD A, R0
 	MOV R0, A
 	MOV @R0, ConnectFour_CheckWinner_i_L0+0
-;connectfour.c,147 :: 		mWinnersDiscsPosition[hits][1] = j;
+;connectfour.c,148 :: 		mWinnersDiscsPosition[hits][1] = j;
 	MOV R1, #1
 	MOV A, ConnectFour_CheckWinner_hits_L0+0
 	INC R1
@@ -557,30 +557,30 @@ L__ConnectFour_CheckWinner104:
 	MOV R0, A
 	INC R0
 	MOV @R0, ConnectFour_CheckWinner_j_L0+0
-;connectfour.c,148 :: 		if(++hits == 4){
+;connectfour.c,149 :: 		if(++hits == 4){
 	INC ConnectFour_CheckWinner_hits_L0+0
 	MOV A, ConnectFour_CheckWinner_hits_L0+0
 	XRL A, #4
 	JNZ L_ConnectFour_CheckWinner46
-;connectfour.c,149 :: 		return 1;
+;connectfour.c,150 :: 		return 1;
 	MOV R0, #1
 	RET
-;connectfour.c,150 :: 		}
+;connectfour.c,151 :: 		}
 L_ConnectFour_CheckWinner46:
-;connectfour.c,151 :: 		}else{
+;connectfour.c,152 :: 		}else{
 	SJMP L_ConnectFour_CheckWinner47
 L_ConnectFour_CheckWinner45:
-;connectfour.c,152 :: 		break;
+;connectfour.c,153 :: 		break;
 	SJMP L_ConnectFour_CheckWinner41
-;connectfour.c,153 :: 		}
+;connectfour.c,154 :: 		}
 L_ConnectFour_CheckWinner47:
-;connectfour.c,144 :: 		for(i = mDiscXPostition, j = mDiscYPosition; i >= 0 && j >= 0; i--, j--){
+;connectfour.c,145 :: 		for(i = mDiscXPostition, j = mDiscYPosition; i >= 0 && j >= 0; i--, j--){
 	DEC ConnectFour_CheckWinner_i_L0+0
 	DEC ConnectFour_CheckWinner_j_L0+0
-;connectfour.c,154 :: 		}
+;connectfour.c,155 :: 		}
 	SJMP L_ConnectFour_CheckWinner40
 L_ConnectFour_CheckWinner41:
-;connectfour.c,156 :: 		for(i = mDiscXPostition + 1, j = mDiscYPosition + 1; i < 6 && j < 7; i++, j++){
+;connectfour.c,157 :: 		for(i = mDiscXPostition + 1, j = mDiscYPosition + 1; i < 6 && j < 7; i++, j++){
 	MOV A, connectfour_mDiscXPostition+0
 	ADD A, #1
 	MOV ConnectFour_CheckWinner_i_L0+0, A
@@ -597,7 +597,7 @@ L_ConnectFour_CheckWinner48:
 	SUBB A, #7
 	JNC L_ConnectFour_CheckWinner49
 L__ConnectFour_CheckWinner82:
-;connectfour.c,157 :: 		if(mGameMatrix[i][j] == mCurrentPlayerColor){
+;connectfour.c,158 :: 		if(mGameMatrix[i][j] == mCurrentPlayerColor){
 	MOV B+0, ConnectFour_CheckWinner_i_L0+0
 	MOV A, #7
 	MUL AB
@@ -611,7 +611,7 @@ L__ConnectFour_CheckWinner82:
 	MOV A, R1
 	XRL A, connectfour_mCurrentPlayerColor+0
 	JNZ L_ConnectFour_CheckWinner53
-;connectfour.c,158 :: 		mWinnersDiscsPosition[hits][0] = i;
+;connectfour.c,159 :: 		mWinnersDiscsPosition[hits][0] = i;
 	MOV R1, #1
 	MOV A, ConnectFour_CheckWinner_hits_L0+0
 	INC R1
@@ -626,7 +626,7 @@ L__ConnectFour_CheckWinner106:
 	ADD A, R0
 	MOV R0, A
 	MOV @R0, ConnectFour_CheckWinner_i_L0+0
-;connectfour.c,159 :: 		mWinnersDiscsPosition[hits][1] = j;
+;connectfour.c,160 :: 		mWinnersDiscsPosition[hits][1] = j;
 	MOV R1, #1
 	MOV A, ConnectFour_CheckWinner_hits_L0+0
 	INC R1
@@ -642,39 +642,39 @@ L__ConnectFour_CheckWinner108:
 	MOV R0, A
 	INC R0
 	MOV @R0, ConnectFour_CheckWinner_j_L0+0
-;connectfour.c,160 :: 		if(++hits == 4){
+;connectfour.c,161 :: 		if(++hits == 4){
 	INC ConnectFour_CheckWinner_hits_L0+0
 	MOV A, ConnectFour_CheckWinner_hits_L0+0
 	XRL A, #4
 	JNZ L_ConnectFour_CheckWinner54
-;connectfour.c,161 :: 		return 1;
+;connectfour.c,162 :: 		return 1;
 	MOV R0, #1
 	RET
-;connectfour.c,162 :: 		}
+;connectfour.c,163 :: 		}
 L_ConnectFour_CheckWinner54:
-;connectfour.c,163 :: 		}else{
+;connectfour.c,164 :: 		}else{
 	SJMP L_ConnectFour_CheckWinner55
 L_ConnectFour_CheckWinner53:
-;connectfour.c,164 :: 		break;
+;connectfour.c,165 :: 		break;
 	SJMP L_ConnectFour_CheckWinner49
-;connectfour.c,165 :: 		}
+;connectfour.c,166 :: 		}
 L_ConnectFour_CheckWinner55:
-;connectfour.c,156 :: 		for(i = mDiscXPostition + 1, j = mDiscYPosition + 1; i < 6 && j < 7; i++, j++){
+;connectfour.c,157 :: 		for(i = mDiscXPostition + 1, j = mDiscYPosition + 1; i < 6 && j < 7; i++, j++){
 	INC ConnectFour_CheckWinner_i_L0+0
 	INC ConnectFour_CheckWinner_j_L0+0
-;connectfour.c,166 :: 		}
+;connectfour.c,167 :: 		}
 	SJMP L_ConnectFour_CheckWinner48
 L_ConnectFour_CheckWinner49:
-;connectfour.c,168 :: 		hits = 0;
+;connectfour.c,169 :: 		hits = 0;
 	MOV ConnectFour_CheckWinner_hits_L0+0, #0
-;connectfour.c,170 :: 		for(i = mDiscXPostition; i < 6; i++){
+;connectfour.c,171 :: 		for(i = mDiscXPostition; i < 6; i++){
 	MOV ConnectFour_CheckWinner_i_L0+0, connectfour_mDiscXPostition+0
 L_ConnectFour_CheckWinner56:
 	CLR C
 	MOV A, ConnectFour_CheckWinner_i_L0+0
 	SUBB A, #6
 	JNC L_ConnectFour_CheckWinner57
-;connectfour.c,171 :: 		if(mGameMatrix[i][mDiscYPosition] == mCurrentPlayerColor){
+;connectfour.c,172 :: 		if(mGameMatrix[i][mDiscYPosition] == mCurrentPlayerColor){
 	MOV B+0, ConnectFour_CheckWinner_i_L0+0
 	MOV A, #7
 	MUL AB
@@ -688,7 +688,7 @@ L_ConnectFour_CheckWinner56:
 	MOV A, R1
 	XRL A, connectfour_mCurrentPlayerColor+0
 	JNZ L_ConnectFour_CheckWinner59
-;connectfour.c,172 :: 		mWinnersDiscsPosition[hits][0] = i;
+;connectfour.c,173 :: 		mWinnersDiscsPosition[hits][0] = i;
 	MOV R1, #1
 	MOV A, ConnectFour_CheckWinner_hits_L0+0
 	INC R1
@@ -703,7 +703,7 @@ L__ConnectFour_CheckWinner110:
 	ADD A, R0
 	MOV R0, A
 	MOV @R0, ConnectFour_CheckWinner_i_L0+0
-;connectfour.c,173 :: 		mWinnersDiscsPosition[hits][1] = mDiscYPosition;
+;connectfour.c,174 :: 		mWinnersDiscsPosition[hits][1] = mDiscYPosition;
 	MOV R1, #1
 	MOV A, ConnectFour_CheckWinner_hits_L0+0
 	INC R1
@@ -719,128 +719,126 @@ L__ConnectFour_CheckWinner112:
 	MOV R0, A
 	INC R0
 	MOV @R0, connectfour_mDiscYPosition+0
-;connectfour.c,174 :: 		if(++hits == 4){
+;connectfour.c,175 :: 		if(++hits == 4){
 	INC ConnectFour_CheckWinner_hits_L0+0
 	MOV A, ConnectFour_CheckWinner_hits_L0+0
 	XRL A, #4
 	JNZ L_ConnectFour_CheckWinner60
-;connectfour.c,175 :: 		return 1;
+;connectfour.c,176 :: 		return 1;
 	MOV R0, #1
 	RET
-;connectfour.c,176 :: 		}
+;connectfour.c,177 :: 		}
 L_ConnectFour_CheckWinner60:
-;connectfour.c,177 :: 		}else{
+;connectfour.c,178 :: 		}else{
 	SJMP L_ConnectFour_CheckWinner61
 L_ConnectFour_CheckWinner59:
-;connectfour.c,178 :: 		break;
+;connectfour.c,179 :: 		break;
 	SJMP L_ConnectFour_CheckWinner57
-;connectfour.c,179 :: 		}
-L_ConnectFour_CheckWinner61:
-;connectfour.c,170 :: 		for(i = mDiscXPostition; i < 6; i++){
-	INC ConnectFour_CheckWinner_i_L0+0
 ;connectfour.c,180 :: 		}
+L_ConnectFour_CheckWinner61:
+;connectfour.c,171 :: 		for(i = mDiscXPostition; i < 6; i++){
+	INC ConnectFour_CheckWinner_i_L0+0
+;connectfour.c,181 :: 		}
 	SJMP L_ConnectFour_CheckWinner56
 L_ConnectFour_CheckWinner57:
-;connectfour.c,181 :: 		return 0;
+;connectfour.c,182 :: 		return 0;
 	MOV R0, #0
-;connectfour.c,182 :: 		}
+;connectfour.c,183 :: 		}
 	RET
 ; end of _ConnectFour_CheckWinner
 
-_ConnectForur_TurnWinnersDiscs:
-;connectfour.c,189 :: 		void ConnectForur_TurnWinnersDiscs(unsigned char onOff){
-;connectfour.c,192 :: 		if(onOff == 0){
-	MOV A, FARG_ConnectForur_TurnWinnersDiscs_onOff+0
-	JNZ L_ConnectForur_TurnWinnersDiscs62
-;connectfour.c,193 :: 		for(i = 0; i < 4; i++){
-	MOV ConnectForur_TurnWinnersDiscs_i_L0+0, #0
-L_ConnectForur_TurnWinnersDiscs63:
+_ConnectFour_TurnWinnersDiscs:
+;connectfour.c,191 :: 		void ConnectFour_TurnWinnersDiscs(unsigned char onOff){
+;connectfour.c,194 :: 		if(onOff){
+	MOV A, FARG_ConnectFour_TurnWinnersDiscs_onOff+0
+	JZ L_ConnectFour_TurnWinnersDiscs62
+;connectfour.c,195 :: 		for(i = 0; i < 4; i++){
+	MOV ConnectFour_TurnWinnersDiscs_i_L0+0, #0
+L_ConnectFour_TurnWinnersDiscs63:
 	CLR C
-	MOV A, ConnectForur_TurnWinnersDiscs_i_L0+0
+	MOV A, ConnectFour_TurnWinnersDiscs_i_L0+0
 	SUBB A, #4
-	JNC L_ConnectForur_TurnWinnersDiscs64
-;connectfour.c,194 :: 		Graphics_SetPixel(mWinnersDiscsPosition[i][1] + 1, mWinnersDiscsPosition[i][0],
+	JNC L_ConnectFour_TurnWinnersDiscs64
+;connectfour.c,196 :: 		Graphics_SetPixel(mWinnersDiscsPosition[i][0], mWinnersDiscsPosition[i][1] + 1,
 	MOV R1, #1
-	MOV A, ConnectForur_TurnWinnersDiscs_i_L0+0
+	MOV A, ConnectFour_TurnWinnersDiscs_i_L0+0
 	INC R1
-	SJMP L__ConnectForur_TurnWinnersDiscs114
-L__ConnectForur_TurnWinnersDiscs115:
+	SJMP L__ConnectFour_TurnWinnersDiscs114
+L__ConnectFour_TurnWinnersDiscs115:
 	CLR C
 	RLC A
-L__ConnectForur_TurnWinnersDiscs114:
-	DJNZ R1, L__ConnectForur_TurnWinnersDiscs115
+L__ConnectFour_TurnWinnersDiscs114:
+	DJNZ R1, L__ConnectFour_TurnWinnersDiscs115
 	MOV R0, A
 	MOV A, #connectfour_mWinnersDiscsPosition+0
 	ADD A, R0
 	MOV R0, A
+	MOV FARG_Graphics_SetPixel_row+0, @R0
+	INC R0
+	MOV A, @R0
 	ADD A, #1
-	MOV R1, A
-	MOV A, @R1
-	ADD A, #1
-	MOV FARG_Graphics_SetPixel_row+0, A
-	MOV FARG_Graphics_SetPixel_column+0, @R0
-;connectfour.c,195 :: 		COLOR_BLACK);
-	MOV FARG_Graphics_SetPixel_color+0, #0
-	LCALL _Graphics_SetPixel+0
-;connectfour.c,193 :: 		for(i = 0; i < 4; i++){
-	INC ConnectForur_TurnWinnersDiscs_i_L0+0
-;connectfour.c,196 :: 		}
-	SJMP L_ConnectForur_TurnWinnersDiscs63
-L_ConnectForur_TurnWinnersDiscs64:
-;connectfour.c,197 :: 		}
-	SJMP L_ConnectForur_TurnWinnersDiscs66
-L_ConnectForur_TurnWinnersDiscs62:
-;connectfour.c,200 :: 		for(i = 0; i < 4; i++){
-	MOV ConnectForur_TurnWinnersDiscs_i_L0+0, #0
-L_ConnectForur_TurnWinnersDiscs67:
-	CLR C
-	MOV A, ConnectForur_TurnWinnersDiscs_i_L0+0
-	SUBB A, #4
-	JNC L_ConnectForur_TurnWinnersDiscs68
-;connectfour.c,201 :: 		Graphics_SetPixel(mWinnersDiscsPosition[i][1] + 1, mWinnersDiscsPosition[i][0],
-	MOV R1, #1
-	MOV A, ConnectForur_TurnWinnersDiscs_i_L0+0
-	INC R1
-	SJMP L__ConnectForur_TurnWinnersDiscs116
-L__ConnectForur_TurnWinnersDiscs117:
-	CLR C
-	RLC A
-L__ConnectForur_TurnWinnersDiscs116:
-	DJNZ R1, L__ConnectForur_TurnWinnersDiscs117
-	MOV R0, A
-	MOV A, #connectfour_mWinnersDiscsPosition+0
-	ADD A, R0
-	MOV R0, A
-	ADD A, #1
-	MOV R1, A
-	MOV A, @R1
-	ADD A, #1
-	MOV FARG_Graphics_SetPixel_row+0, A
-	MOV FARG_Graphics_SetPixel_column+0, @R0
-;connectfour.c,202 :: 		mCurrentPlayerColor);
+	MOV FARG_Graphics_SetPixel_column+0, A
+;connectfour.c,197 :: 		mCurrentPlayerColor);
 	MOV FARG_Graphics_SetPixel_color+0, connectfour_mCurrentPlayerColor+0
 	LCALL _Graphics_SetPixel+0
-;connectfour.c,200 :: 		for(i = 0; i < 4; i++){
-	INC ConnectForur_TurnWinnersDiscs_i_L0+0
-;connectfour.c,203 :: 		}
-	SJMP L_ConnectForur_TurnWinnersDiscs67
-L_ConnectForur_TurnWinnersDiscs68:
-;connectfour.c,204 :: 		}
-L_ConnectForur_TurnWinnersDiscs66:
+;connectfour.c,195 :: 		for(i = 0; i < 4; i++){
+	INC ConnectFour_TurnWinnersDiscs_i_L0+0
+;connectfour.c,198 :: 		}
+	SJMP L_ConnectFour_TurnWinnersDiscs63
+L_ConnectFour_TurnWinnersDiscs64:
+;connectfour.c,199 :: 		}
+	SJMP L_ConnectFour_TurnWinnersDiscs66
+L_ConnectFour_TurnWinnersDiscs62:
+;connectfour.c,202 :: 		for(i = 0; i < 4; i++){
+	MOV ConnectFour_TurnWinnersDiscs_i_L0+0, #0
+L_ConnectFour_TurnWinnersDiscs67:
+	CLR C
+	MOV A, ConnectFour_TurnWinnersDiscs_i_L0+0
+	SUBB A, #4
+	JNC L_ConnectFour_TurnWinnersDiscs68
+;connectfour.c,203 :: 		Graphics_SetPixel(mWinnersDiscsPosition[i][0], mWinnersDiscsPosition[i][1] + 1,
+	MOV R1, #1
+	MOV A, ConnectFour_TurnWinnersDiscs_i_L0+0
+	INC R1
+	SJMP L__ConnectFour_TurnWinnersDiscs116
+L__ConnectFour_TurnWinnersDiscs117:
+	CLR C
+	RLC A
+L__ConnectFour_TurnWinnersDiscs116:
+	DJNZ R1, L__ConnectFour_TurnWinnersDiscs117
+	MOV R0, A
+	MOV A, #connectfour_mWinnersDiscsPosition+0
+	ADD A, R0
+	MOV R0, A
+	MOV FARG_Graphics_SetPixel_row+0, @R0
+	INC R0
+	MOV A, @R0
+	ADD A, #1
+	MOV FARG_Graphics_SetPixel_column+0, A
+;connectfour.c,204 :: 		COLOR_BLACK);
+	MOV FARG_Graphics_SetPixel_color+0, #0
+	LCALL _Graphics_SetPixel+0
+;connectfour.c,202 :: 		for(i = 0; i < 4; i++){
+	INC ConnectFour_TurnWinnersDiscs_i_L0+0
 ;connectfour.c,205 :: 		}
+	SJMP L_ConnectFour_TurnWinnersDiscs67
+L_ConnectFour_TurnWinnersDiscs68:
+;connectfour.c,206 :: 		}
+L_ConnectFour_TurnWinnersDiscs66:
+;connectfour.c,207 :: 		}
 	RET
-; end of _ConnectForur_TurnWinnersDiscs
+; end of _ConnectFour_TurnWinnersDiscs
 
 _ConnectFour_NewGame:
-;connectfour.c,212 :: 		void ConnectFour_NewGame(){
-;connectfour.c,216 :: 		for(i = 0; i < 6; i++){
+;connectfour.c,214 :: 		void ConnectFour_NewGame(){
+;connectfour.c,218 :: 		for(i = 0; i < 6; i++){
 	MOV ConnectFour_NewGame_i_L0+0, #0
 L_ConnectFour_NewGame70:
 	CLR C
 	MOV A, ConnectFour_NewGame_i_L0+0
 	SUBB A, #6
 	JNC L_ConnectFour_NewGame71
-;connectfour.c,217 :: 		for(j = 0; j < 7; j++){
+;connectfour.c,219 :: 		for(j = 0; j < 7; j++){
 	MOV ConnectFour_NewGame_j_L0+0, #0
 L_ConnectFour_NewGame73:
 	CLR C
@@ -848,22 +846,22 @@ L_ConnectFour_NewGame73:
 	SUBB A, #7
 	JNC L_ConnectFour_NewGame74
 	INC ConnectFour_NewGame_j_L0+0
-;connectfour.c,219 :: 		}
+;connectfour.c,221 :: 		}
 	SJMP L_ConnectFour_NewGame73
 L_ConnectFour_NewGame74:
-;connectfour.c,216 :: 		for(i = 0; i < 6; i++){
+;connectfour.c,218 :: 		for(i = 0; i < 6; i++){
 	INC ConnectFour_NewGame_i_L0+0
-;connectfour.c,220 :: 		}
+;connectfour.c,222 :: 		}
 	SJMP L_ConnectFour_NewGame70
 L_ConnectFour_NewGame71:
-;connectfour.c,222 :: 		for(i = 0; i < 4; i++){
+;connectfour.c,224 :: 		for(i = 0; i < 4; i++){
 	MOV ConnectFour_NewGame_i_L0+0, #0
 L_ConnectFour_NewGame76:
 	CLR C
 	MOV A, ConnectFour_NewGame_i_L0+0
 	SUBB A, #4
 	JNC L_ConnectFour_NewGame77
-;connectfour.c,223 :: 		for(j = 0; j < 2; j++){
+;connectfour.c,225 :: 		for(j = 0; j < 2; j++){
 	MOV ConnectFour_NewGame_j_L0+0, #0
 L_ConnectFour_NewGame79:
 	CLR C
@@ -871,16 +869,18 @@ L_ConnectFour_NewGame79:
 	SUBB A, #2
 	JNC L_ConnectFour_NewGame80
 	INC ConnectFour_NewGame_j_L0+0
-;connectfour.c,225 :: 		}
+;connectfour.c,227 :: 		}
 	SJMP L_ConnectFour_NewGame79
 L_ConnectFour_NewGame80:
-;connectfour.c,222 :: 		for(i = 0; i < 4; i++){
+;connectfour.c,224 :: 		for(i = 0; i < 4; i++){
 	INC ConnectFour_NewGame_i_L0+0
-;connectfour.c,226 :: 		}
+;connectfour.c,228 :: 		}
 	SJMP L_ConnectFour_NewGame76
 L_ConnectFour_NewGame77:
-;connectfour.c,228 :: 		Graphics_ClearDisplay();
+;connectfour.c,230 :: 		Graphics_ClearDisplay();
 	LCALL _Graphics_ClearDisplay+0
-;connectfour.c,231 :: 		}
+;connectfour.c,232 :: 		ConnectFour_Init();
+	LCALL _ConnectFour_Init+0
+;connectfour.c,233 :: 		}
 	RET
 ; end of _ConnectFour_NewGame

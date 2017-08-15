@@ -102,9 +102,9 @@ L_main12:
 	MOV A, 7
 	SUBB A, #0
 	JNC L_main15
-;main.c,51 :: 		ConnectForur_TurnWinnersDiscs(0);
-	MOV FARG_ConnectForur_TurnWinnersDiscs_onOff+0, #0
-	LCALL _ConnectForur_TurnWinnersDiscs+0
+;main.c,51 :: 		ConnectFour_TurnWinnersDiscs(0);
+	MOV FARG_ConnectFour_TurnWinnersDiscs_onOff+0, #0
+	LCALL _ConnectFour_TurnWinnersDiscs+0
 ;main.c,52 :: 		}
 	SJMP L_main16
 L_main15:
@@ -132,9 +132,9 @@ L_main15:
 	MOV A, R4
 	SUBB A, #0
 	JNC L_main17
-;main.c,55 :: 		ConnectForur_TurnWinnersDiscs(1);
-	MOV FARG_ConnectForur_TurnWinnersDiscs_onOff+0, #1
-	LCALL _ConnectForur_TurnWinnersDiscs+0
+;main.c,55 :: 		ConnectFour_TurnWinnersDiscs(1);
+	MOV FARG_ConnectFour_TurnWinnersDiscs_onOff+0, #1
+	LCALL _ConnectFour_TurnWinnersDiscs+0
 ;main.c,56 :: 		}
 	SJMP L_main18
 L_main17:
@@ -178,6 +178,6 @@ L_main11:
 L_main19:
 ;main.c,73 :: 		} while(1);
 	LJMP L_main0
-;main.c,74 :: 		}
+;main.c,75 :: 		}
 	SJMP #254
 ; end of _main
