@@ -15,28 +15,28 @@ typedef enum Color{
  COLOR_GREEN,
  COLOR_YELLOW
 } Color;
-#line 23 "d:/workspaces/mikroc/connectfour/graphics.h"
+#line 24 "d:/workspaces/mikroc/connectfour/graphics.h"
 void Graphics_SetPixel(unsigned char row, unsigned char column, Color color);
-#line 30 "d:/workspaces/mikroc/connectfour/graphics.h"
-void Graphics_VerticalLine(unsigned char column, unsigned char row_start,
- unsigned char row_end, Color color);
-#line 38 "d:/workspaces/mikroc/connectfour/graphics.h"
-void Graphics_HorizontalLine(unsigned char row, unsigned char column_start,
- unsigned char column_end, Color color);
-#line 46 "d:/workspaces/mikroc/connectfour/graphics.h"
+#line 32 "d:/workspaces/mikroc/connectfour/graphics.h"
+void Graphics_VerticalLine(unsigned char column, unsigned char rowStart,
+ unsigned char rowEnd, Color color);
+#line 41 "d:/workspaces/mikroc/connectfour/graphics.h"
+void Graphics_HorizontalLine(unsigned char row, unsigned char columnStart,
+ unsigned char columnEnd, Color color);
+#line 49 "d:/workspaces/mikroc/connectfour/graphics.h"
 void Graphics_ClearDisplay();
 #line 1 "d:/workspaces/mikroc/connectfour/connectfour.h"
 #line 16 "d:/workspaces/mikroc/connectfour/connectfour.h"
 void ConnectFour_Init();
 #line 23 "d:/workspaces/mikroc/connectfour/connectfour.h"
 void ConnectFour_SwitchPlayer();
-#line 30 "d:/workspaces/mikroc/connectfour/connectfour.h"
+#line 31 "d:/workspaces/mikroc/connectfour/connectfour.h"
 unsigned char ConnectFour_InsertDisc(unsigned char column);
-#line 37 "d:/workspaces/mikroc/connectfour/connectfour.h"
+#line 38 "d:/workspaces/mikroc/connectfour/connectfour.h"
 unsigned char ConnectFour_CheckWinner();
-#line 44 "d:/workspaces/mikroc/connectfour/connectfour.h"
-void ConnectForur_TurnWinnersDiscs(unsigned char onOff);
-#line 51 "d:/workspaces/mikroc/connectfour/connectfour.h"
+#line 46 "d:/workspaces/mikroc/connectfour/connectfour.h"
+void ConnectFour_TurnWinnersDiscs(unsigned char onOff);
+#line 53 "d:/workspaces/mikroc/connectfour/connectfour.h"
 void ConnectFour_NewGame();
 #line 6 "D:/Workspaces/MikroC/connectfour/main.c"
 char keypadPort at P0;
@@ -84,11 +84,11 @@ void main() {
  stopTime = Timer_Miliseconds();
 
  if(stopTime - startTime < 500){
- ConnectForur_TurnWinnersDiscs(0);
+ ConnectFour_TurnWinnersDiscs(0);
  }
 
  else if(stopTime - startTime < 1000){
- ConnectForur_TurnWinnersDiscs(1);
+ ConnectFour_TurnWinnersDiscs(1);
  }
 
  else{
@@ -107,4 +107,5 @@ void main() {
  ConnectFour_SwitchPlayer();
  }
  } while(1);
+
 }

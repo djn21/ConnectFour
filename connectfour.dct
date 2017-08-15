@@ -161,12 +161,12 @@ character8x7
 clkreg
 cmd_status
 compare_double
-connectforur_turnwinnersdiscs
 connectfour_checkwinner
 connectfour_init
 connectfour_insertdisc
 connectfour_newgame
 connectfour_switchplayer
+connectfour_turnwinnersdiscs
 cos
 cose3
 cosh
@@ -408,11 +408,8 @@ memcmp
 memcpy
 memmove
 memset
-mgreenoutput
 min
 modf
-mredoutput
-mrowoutout
 mstr
 mstr_bit
 mul_16x16

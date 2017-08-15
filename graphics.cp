@@ -7,20 +7,20 @@ typedef enum Color{
  COLOR_GREEN,
  COLOR_YELLOW
 } Color;
-#line 23 "d:/workspaces/mikroc/connectfour/graphics.h"
+#line 24 "d:/workspaces/mikroc/connectfour/graphics.h"
 void Graphics_SetPixel(unsigned char row, unsigned char column, Color color);
-#line 30 "d:/workspaces/mikroc/connectfour/graphics.h"
-void Graphics_VerticalLine(unsigned char column, unsigned char row_start,
- unsigned char row_end, Color color);
-#line 38 "d:/workspaces/mikroc/connectfour/graphics.h"
-void Graphics_HorizontalLine(unsigned char row, unsigned char column_start,
- unsigned char column_end, Color color);
-#line 46 "d:/workspaces/mikroc/connectfour/graphics.h"
+#line 32 "d:/workspaces/mikroc/connectfour/graphics.h"
+void Graphics_VerticalLine(unsigned char column, unsigned char rowStart,
+ unsigned char rowEnd, Color color);
+#line 41 "d:/workspaces/mikroc/connectfour/graphics.h"
+void Graphics_HorizontalLine(unsigned char row, unsigned char columnStart,
+ unsigned char columnEnd, Color color);
+#line 49 "d:/workspaces/mikroc/connectfour/graphics.h"
 void Graphics_ClearDisplay();
 #line 10 "D:/Workspaces/MikroC/connectfour/graphics.c"
 extern unsigned char gMatrixRed[];
 extern unsigned char gMatrixGreen[];
-#line 18 "D:/Workspaces/MikroC/connectfour/graphics.c"
+#line 19 "D:/Workspaces/MikroC/connectfour/graphics.c"
 void Graphics_SetPixel(unsigned char row, unsigned char column, Color color){
  switch(color){
  case COLOR_BLACK:
@@ -41,23 +41,23 @@ void Graphics_SetPixel(unsigned char row, unsigned char column, Color color){
  break;
  }
 }
-#line 44 "D:/Workspaces/MikroC/connectfour/graphics.c"
-void Graphics_VerticalLine(unsigned char column, unsigned char row_start,
- unsigned char row_end, Color color){
+#line 46 "D:/Workspaces/MikroC/connectfour/graphics.c"
+void Graphics_VerticalLine(unsigned char column, unsigned char rowStart,
+ unsigned char rowEnd, Color color){
  unsigned char row;
- for(row = row_start; row <= row_end; row++){
+ for(row = rowStart; row <= rowEnd; row++){
  Graphics_SetPixel(row, column, color);
  }
 }
-#line 57 "D:/Workspaces/MikroC/connectfour/graphics.c"
-void Graphics_HorizontalLine(unsigned char row, unsigned char column_start,
- unsigned char column_end, Color color){
+#line 60 "D:/Workspaces/MikroC/connectfour/graphics.c"
+void Graphics_HorizontalLine(unsigned char row, unsigned char columnStart,
+ unsigned char columnEnd, Color color){
  unsigned char column;
- for(column = column_start; column <= column_end; column++){
+ for(column = columnStart; column <= columnEnd; column++){
  Graphics_SetPixel(row, column, color);
  }
 }
-#line 70 "D:/Workspaces/MikroC/connectfour/graphics.c"
+#line 73 "D:/Workspaces/MikroC/connectfour/graphics.c"
 void Graphics_ClearDisplay(){
  unsigned char i;
  for(i = 0; i < 8; i++){
