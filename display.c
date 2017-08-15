@@ -22,6 +22,10 @@ unsigned char gMatrixGreen[8] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00}
 * RETURNS:  This function does not return value
 *************************************************************************************************/
 void Display_Init(){
+    // set ports initial values
+    mRowOutputPort = 0x00;
+    mRedOutputPort = 0x00;
+    mGreenOutputPort = 0x00;
     // set timer 0 (gate disable, interval timer, mode 1)
     TMOD |= 0x01;
     // initial values to get interrupt at 2 ms
@@ -39,8 +43,10 @@ void Display_Init(){
 * RETURNS:  This function does not return value
 *************************************************************************************************/
 void Display_SetOutput(unsigned char row, unsigned char red, unsigned char green){
-    // turn of row to avoid ghosts
+    // turn off ports to avoid ghosts
     mRowOutputPort = 0x00;
+    mRedOutputPort = 0x00;
+    mGreenOutputPort = 0x00;
     // set colors
     mRedOutputPort = red;
     mGreenOutputPort = green;
@@ -57,7 +63,7 @@ void Display_Refresh() iv IVT_ADDR_ET0 {
     static unsigned char i = 0;
     // stop timer
     TR0_bit = 0;
-    // reset timer values to get interrupt at 1 ms
+    // reset timer values to get interrupt at 2 ms
     TH0 = 0xF9;
     TL0 = 0x7D;
     // set output ports

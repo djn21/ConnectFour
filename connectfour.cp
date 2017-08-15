@@ -4,13 +4,13 @@
 void ConnectFour_Init();
 #line 23 "d:/workspaces/mikroc/connectfour/connectfour.h"
 void ConnectFour_SwitchPlayer();
-#line 30 "d:/workspaces/mikroc/connectfour/connectfour.h"
+#line 31 "d:/workspaces/mikroc/connectfour/connectfour.h"
 unsigned char ConnectFour_InsertDisc(unsigned char column);
-#line 37 "d:/workspaces/mikroc/connectfour/connectfour.h"
+#line 38 "d:/workspaces/mikroc/connectfour/connectfour.h"
 unsigned char ConnectFour_CheckWinner();
-#line 44 "d:/workspaces/mikroc/connectfour/connectfour.h"
-void ConnectForur_TurnWinnersDiscs(unsigned char onOff);
-#line 51 "d:/workspaces/mikroc/connectfour/connectfour.h"
+#line 46 "d:/workspaces/mikroc/connectfour/connectfour.h"
+void ConnectFour_TurnWinnersDiscs(unsigned char onOff);
+#line 53 "d:/workspaces/mikroc/connectfour/connectfour.h"
 void ConnectFour_NewGame();
 #line 1 "d:/workspaces/mikroc/connectfour/graphics.h"
 #line 11 "d:/workspaces/mikroc/connectfour/graphics.h"
@@ -20,15 +20,15 @@ typedef enum Color{
  COLOR_GREEN,
  COLOR_YELLOW
 } Color;
-#line 23 "d:/workspaces/mikroc/connectfour/graphics.h"
+#line 24 "d:/workspaces/mikroc/connectfour/graphics.h"
 void Graphics_SetPixel(unsigned char row, unsigned char column, Color color);
-#line 30 "d:/workspaces/mikroc/connectfour/graphics.h"
-void Graphics_VerticalLine(unsigned char column, unsigned char row_start,
- unsigned char row_end, Color color);
-#line 38 "d:/workspaces/mikroc/connectfour/graphics.h"
-void Graphics_HorizontalLine(unsigned char row, unsigned char column_start,
- unsigned char column_end, Color color);
-#line 46 "d:/workspaces/mikroc/connectfour/graphics.h"
+#line 32 "d:/workspaces/mikroc/connectfour/graphics.h"
+void Graphics_VerticalLine(unsigned char column, unsigned char rowStart,
+ unsigned char rowEnd, Color color);
+#line 41 "d:/workspaces/mikroc/connectfour/graphics.h"
+void Graphics_HorizontalLine(unsigned char row, unsigned char columnStart,
+ unsigned char columnEnd, Color color);
+#line 49 "d:/workspaces/mikroc/connectfour/graphics.h"
 void Graphics_ClearDisplay();
 #line 11 "D:/Workspaces/MikroC/connectfour/connectfour.c"
 static unsigned char mGameMatrix[6][7] = {{0, 0, 0, 0, 0, 0, 0},
@@ -38,7 +38,7 @@ static unsigned char mGameMatrix[6][7] = {{0, 0, 0, 0, 0, 0, 0},
  {0, 0, 0, 0, 0, 0, 0},
  {0, 0, 0, 0, 0, 0, 0}};
 
-static unsigned char mWinnersDiscsPosition[4][2] = {{0, 0}, {0, 0}, {0,0}, {0, 0}};
+static unsigned char mWinnersDiscsPosition[4][2] = {{0, 0}, {0, 0}, {0, 0}, {0, 0}};
 
 static unsigned char mCurrentPlayerColor;
 
@@ -59,7 +59,7 @@ void ConnectFour_SwitchPlayer(){
  Graphics_HorizontalLine(7, 0, 7, COLOR_RED);
  }
 }
-#line 55 "D:/Workspaces/MikroC/connectfour/connectfour.c"
+#line 56 "D:/Workspaces/MikroC/connectfour/connectfour.c"
 unsigned char ConnectFour_InsertDisc(unsigned char column){
  signed char i;
  signed char j;
@@ -86,7 +86,7 @@ unsigned char ConnectFour_InsertDisc(unsigned char column){
  return 0;
  }
 }
-#line 87 "D:/Workspaces/MikroC/connectfour/connectfour.c"
+#line 88 "D:/Workspaces/MikroC/connectfour/connectfour.c"
 unsigned char ConnectFour_CheckWinner(){
  unsigned char i;
  unsigned char j;
@@ -183,25 +183,25 @@ unsigned char ConnectFour_CheckWinner(){
  }
  return 0;
 }
-#line 189 "D:/Workspaces/MikroC/connectfour/connectfour.c"
-void ConnectForur_TurnWinnersDiscs(unsigned char onOff){
+#line 191 "D:/Workspaces/MikroC/connectfour/connectfour.c"
+void ConnectFour_TurnWinnersDiscs(unsigned char onOff){
  unsigned char i;
 
- if(onOff == 0){
+ if(onOff){
  for(i = 0; i < 4; i++){
- Graphics_SetPixel(mWinnersDiscsPosition[i][1] + 1, mWinnersDiscsPosition[i][0],
- COLOR_BLACK);
+ Graphics_SetPixel(mWinnersDiscsPosition[i][0], mWinnersDiscsPosition[i][1] + 1,
+ mCurrentPlayerColor);
  }
  }
 
  else{
  for(i = 0; i < 4; i++){
- Graphics_SetPixel(mWinnersDiscsPosition[i][1] + 1, mWinnersDiscsPosition[i][0],
- mCurrentPlayerColor);
+ Graphics_SetPixel(mWinnersDiscsPosition[i][0], mWinnersDiscsPosition[i][1] + 1,
+ COLOR_BLACK);
  }
  }
 }
-#line 212 "D:/Workspaces/MikroC/connectfour/connectfour.c"
+#line 214 "D:/Workspaces/MikroC/connectfour/connectfour.c"
 void ConnectFour_NewGame(){
  unsigned char i;
  unsigned char j;
@@ -220,5 +220,5 @@ void ConnectFour_NewGame(){
 
  Graphics_ClearDisplay();
 
- ConnectFour_Init;
+ ConnectFour_Init();
 }
