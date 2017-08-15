@@ -30,7 +30,7 @@ void Graphics_SetPixel(unsigned char row, unsigned char column, Color color);
 * RETURNS:  This function does not return value
 *************************************************************************************************/
 void Graphics_VerticalLine(unsigned char column, unsigned char rowStart,  
-        unsigned char rowEnd, Color color);
+                           unsigned char rowEnd, Color color);
 
 /*************************************************************************************************
 * DOES:     Draw a horizontal line on a given row form columnStar to columnEnd
@@ -39,7 +39,7 @@ void Graphics_VerticalLine(unsigned char column, unsigned char rowStart,
 * RETURNS:  This function does not return value
 *************************************************************************************************/
 void Graphics_HorizontalLine(unsigned char row, unsigned char columnStart, 
-        unsigned char columnEnd, Color color);
+                             unsigned char columnEnd, Color color);
 
 /*************************************************************************************************
 * DOES:     Clear display. Set all pixels to black color
