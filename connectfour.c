@@ -15,7 +15,7 @@ static unsigned char mGameMatrix[6][7] = {{0, 0, 0, 0, 0, 0, 0},
                                           {0, 0, 0, 0, 0, 0, 0},
                                           {0, 0, 0, 0, 0, 0, 0}};
                       
-static unsigned char mWinnersDiscsPosition[4][2] = {{0, 0}, {0, 0}, {0,0}, {0, 0}};
+static unsigned char mWinnersDiscsPosition[4][2] = {{0, 0}, {0, 0}, {0, 0}, {0, 0}};
                                           
 static unsigned char mCurrentPlayerColor;
 
