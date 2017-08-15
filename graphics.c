@@ -44,7 +44,7 @@ void Graphics_SetPixel(unsigned char row, unsigned char column, Color color){
 * RETURNS:  This function does not return value
 *************************************************************************************************/
 void Graphics_VerticalLine(unsigned char column, unsigned char rowStart,
-        unsigned char rowEnd, Color color){
+                           unsigned char rowEnd, Color color){
     unsigned char row;
     for(row = rowStart; row <= rowEnd; row++){
         Graphics_SetPixel(row, column, color);
@@ -58,7 +58,7 @@ void Graphics_VerticalLine(unsigned char column, unsigned char rowStart,
 * RETURNS:  This function does not return value
 *************************************************************************************************/
 void Graphics_HorizontalLine(unsigned char row, unsigned char columnStart, 
-        unsigned char columnEnd, Color color){
+                             unsigned char columnEnd, Color color){
     unsigned char column;
     for(column = columnStart; column <= columnEnd; column++){
         Graphics_SetPixel(row, column, color);
