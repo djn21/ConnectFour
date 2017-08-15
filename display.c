@@ -1,9 +1,9 @@
-/******************************************************************************
+/*************************************************************************************************
 * MODULE:    DISPLAY
 * CONTAINS:  Functions for working with display
 * COPYRIGHT: Faculty of Electrical Engineering - www.etf.unibl.org
 * VERSION:   1.0, 09-AUG-17
-******************************************************************************/
+*************************************************************************************************/
 
 #include <display.h>
 
@@ -16,11 +16,11 @@ const unsigned char gMatrixRow[8] = {0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0
 unsigned char gMatrixRed[8] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
 unsigned char gMatrixGreen[8] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
 
-/******************************************************************************
+/*************************************************************************************************
 * DOES:     Initialize display
 * GLOBALS:  This function does not read or write global variables
 * RETURNS:  This function does not return value
-******************************************************************************/
+*************************************************************************************************/
 void Display_Init(){
     // set timer 0 (gate disable, interval timer, mode 1)
     TMOD |= 0x01;
@@ -33,11 +33,11 @@ void Display_Init(){
     TR0_bit = 1;
 }
 
-/******************************************************************************
+/*************************************************************************************************
 * DOES:     Set display rows and colors matrix
 * GLOBALS:  Modify gMatrixRow, gMatrixRed, gMatrixGreen
 * RETURNS:  This function does not return value
-******************************************************************************/
+*************************************************************************************************/
 void Display_SetOutput(unsigned char row, unsigned char red, unsigned char green){
     // turn of row to avoid ghosts
     mRowOutputPort = 0x00;
@@ -48,11 +48,11 @@ void Display_SetOutput(unsigned char row, unsigned char red, unsigned char green
     mRowOutputPort = row;
 }
 
-/******************************************************************************
+/*************************************************************************************************
 * DOES:     Refresh display
 * GLOBALS:  Reads gMatrixRow, gMatrixRed, gMatrixGreen
 * RETURNS:  This function does not return value
-******************************************************************************/
+*************************************************************************************************/
 void Display_Refresh() iv IVT_ADDR_ET0 {
     static unsigned char i = 0;
     // stop timer
