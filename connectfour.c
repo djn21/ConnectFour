@@ -86,8 +86,8 @@ unsigned char ConnectFour_InsertDisc(unsigned char column){
 * RETURNS:  Returns 1 if somone wins the game, or 0 if not
 *************************************************************************************************/
 unsigned char ConnectFour_CheckWinner(){
-    unsigned char i;
-    unsigned char j;
+    signed char i;
+    signed char j;
     unsigned char hits = 0;
     // check x axis left
     for(j = mDiscYPosition; j >= 0; j--){
