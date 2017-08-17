@@ -38,7 +38,7 @@ void main() {
             }while(key < '1' || key > '7');
             // insert disc
             discInserted = ConnectFour_InsertDisc(key - 48);
-        } while(discInserted == 0);
+        } while(!discInserted);
         // check winner
         hasWinner = ConnectFour_CheckWinner();
         // has winner
