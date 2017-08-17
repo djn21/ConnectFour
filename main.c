@@ -33,12 +33,12 @@ void main() {
         do{
             // wait until 1...7  is pressed
             do{
-                keyIndex = Keypad_Key_Click();
+                keyIndex = Keypad_Key_Press();
                 key = keys[keyIndex];
             }while(key < '1' || key > '7');
             // insert disc
             discInserted = ConnectFour_InsertDisc(key - 48);
-        } while(discInserted == 0);
+        } while(!discInserted);
         // check winner
         hasWinner = ConnectFour_CheckWinner();
         // has winner
@@ -46,20 +46,20 @@ void main() {
             startTime = Timer_Miliseconds();
             do{
                 stopTime = Timer_Miliseconds();
-                // turn off winners discs  500 ms
+                // turn on winners discs  500 ms
                 if(stopTime - startTime < 500){
-                    ConnectFour_TurnWinnersDiscs(0);
-                }
-                // turn on winners discs 500 ms
-                else if(stopTime - startTime < 1000){
                     ConnectFour_TurnWinnersDiscs(1);
+                }
+                // turn off winners discs 500 ms
+                else if(stopTime - startTime < 1000){
+                    ConnectFour_TurnWinnersDiscs(0);
                 }
                 // reset time
                 else{
                     startTime = Timer_Miliseconds();
                 }
                 // wait until D (new game) is pressed
-                keyIndex = Keypad_Key_Click();
+                keyIndex = Keypad_Key_Press();
                 key = keys[keyIndex];
             }while(key != 'D');
             // new game

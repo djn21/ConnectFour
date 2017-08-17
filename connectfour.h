@@ -38,7 +38,7 @@ unsigned char ConnectFour_InsertDisc(unsigned char column);
 unsigned char ConnectFour_CheckWinner();
 
 /*************************************************************************************************
-* DOES:     Set winners discs blinking
+* DOES:     Turn ON or OFF winners discs
 * GLOBALS:  Reads mCurrentPlayerColor, mWinnersDiscsPosition
 * LIMITS:   Parameter onOff must be 1 for ON or 0 for OFF
 * RETURNS:  This function does not return value

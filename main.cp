@@ -77,8 +77,37 @@ void main() {
  } while(discInserted == 0);
 
  hasWinner = ConnectFour_CheckWinner();
+<<<<<<< HEAD
 #line 70 "D:/Workspaces/MikroC/connectfour/main.c"
  if(hasWinner == 0){
+=======
+
+ if(hasWinner){
+ startTime = Timer_Miliseconds();
+ do{
+ stopTime = Timer_Miliseconds();
+
+ if(stopTime - startTime < 500){
+ ConnectFour_TurnWinnersDiscs(0);
+ }
+
+ else if(stopTime - startTime < 1000){
+ ConnectFour_TurnWinnersDiscs(1);
+ }
+
+ else{
+ startTime = Timer_Miliseconds();
+ }
+
+ keyIndex = Keypad_Key_Click();
+ key = keys[keyIndex];
+ }while(key != 'D');
+
+ ConnectFour_NewGame();
+ }
+
+ else {
+>>>>>>> a7b2ab055a0904672e9901c936656befca9b08ee
 
  ConnectFour_SwitchPlayer();
  } else {

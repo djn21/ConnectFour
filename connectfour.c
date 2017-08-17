@@ -183,7 +183,7 @@ unsigned char ConnectFour_CheckWinner(){
 }
 
 /*************************************************************************************************
-* DOES:     Set winners discs blinking
+* DOES:     Turn ON or OFF winners discs
 * GLOBALS:  Reads mCurrentPlayerColor, mWinnersDiscsPosition
 * LIMITS:   Parameter onOff must be 1 for ON or 0 for OFF
 * RETURNS:  This function does not return value
@@ -217,13 +217,13 @@ void ConnectFour_NewGame(){
     // clear game matrix
     for(i = 0; i < 6; i++){
         for(j = 0; j < 7; j++){
-            mGameMatrix[i][j] == 0;
+            mGameMatrix[i][j] = 0;
         }
     }
     // clear winners discs positions
     for(i = 0; i < 4; i++){
         for(j = 0; j < 2; j++){
-            mWinnersDiscsPosition[i][j] == 0;
+            mWinnersDiscsPosition[i][j] = 0;
         }
     }
     // clear display
