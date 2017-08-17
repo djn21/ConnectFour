@@ -48,7 +48,7 @@ L_main6:
 	MOV A, main_key_L0+0
 	SUBB A, #55
 	JNC L_main6
-L__main13:
+L__main20:
 ;main.c,40 :: 		discInserted = ConnectFour_InsertDisc(key - 48);
 	CLR C
 	MOV A, main_key_L0+0
@@ -60,24 +60,8 @@ L__main13:
 	JZ L_main3
 ;main.c,43 :: 		hasWinner = ConnectFour_CheckWinner();
 	LCALL _ConnectFour_CheckWinner+0
-;main.c,70 :: 		if(hasWinner == 0){
+;main.c,45 :: 		if(hasWinner){
 	MOV A, R0
-<<<<<<< HEAD
-	JNZ L_main11
-;main.c,72 :: 		ConnectFour_SwitchPlayer();
-	LCALL _ConnectFour_SwitchPlayer+0
-;main.c,73 :: 		} else {
-	SJMP L_main12
-L_main11:
-;main.c,74 :: 		break;
-	SJMP L_main1
-;main.c,75 :: 		}
-L_main12:
-;main.c,76 :: 		} while(1);
-	SJMP L_main0
-L_main1:
-;main.c,78 :: 		}
-=======
 	JNZ #3
 	LJMP L_main11
 ;main.c,46 :: 		startTime = Timer_Miliseconds();
@@ -195,6 +179,5 @@ L_main19:
 ;main.c,73 :: 		} while(1);
 	LJMP L_main0
 ;main.c,75 :: 		}
->>>>>>> a7b2ab055a0904672e9901c936656befca9b08ee
 	SJMP #254
 ; end of _main

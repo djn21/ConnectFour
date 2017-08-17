@@ -13,39 +13,15 @@ _Display_Init:
 	MOV TH0+0, #249
 ;display.c,33 :: 		TL0 = 0x7D;
 	MOV TL0+0, #125
-<<<<<<< HEAD
-;display.c,37 :: 		IE |= 0x82;
-	ORL IE+0, #130
-;display.c,39 :: 		TR0_bit = 1;
-	SETB TR0_bit+0
-;display.c,40 :: 		}
-=======
 ;display.c,35 :: 		IE |= 0x82;
 	ORL IE+0, #130
 ;display.c,37 :: 		TR0_bit = 1;
 	SETB TR0_bit+0
 ;display.c,38 :: 		}
->>>>>>> a7b2ab055a0904672e9901c936656befca9b08ee
 	RET
 ; end of _Display_Init
 
 _Display_SetOutput:
-<<<<<<< HEAD
-;display.c,47 :: 		void Display_SetOutput(unsigned char row, unsigned char red, unsigned char green){
-;display.c,49 :: 		mRowOutputPort = 0x00;
-	MOV P1+0, #0
-;display.c,50 :: 		mRedOutputPort = 0x00;
-	MOV P2+0, #0
-;display.c,51 :: 		mGreenOutputPort = 0x00;
-	MOV P3+0, #0
-;display.c,53 :: 		mRedOutputPort = red;
-	MOV P2+0, FARG_Display_SetOutput_red+0
-;display.c,54 :: 		mGreenOutputPort = green;
-	MOV P3+0, FARG_Display_SetOutput_green+0
-;display.c,56 :: 		mRowOutputPort = row;
-	MOV P1+0, FARG_Display_SetOutput_row+0
-;display.c,57 :: 		}
-=======
 ;display.c,45 :: 		void Display_SetOutput(unsigned char row, unsigned char red, unsigned char green){
 ;display.c,47 :: 		mRowOutputPort = 0x00;
 	MOV P1+0, #0
@@ -60,7 +36,6 @@ _Display_SetOutput:
 ;display.c,54 :: 		mRowOutputPort = row;
 	MOV P1+0, FARG_Display_SetOutput_row+0
 ;display.c,55 :: 		}
->>>>>>> a7b2ab055a0904672e9901c936656befca9b08ee
 	RET
 ; end of _Display_SetOutput
 
@@ -70,16 +45,6 @@ _Display_Refresh:
 	PUSH B+0
 	PUSH 130
 	PUSH 131
-<<<<<<< HEAD
-;display.c,64 :: 		void Display_Refresh() iv IVT_ADDR_ET0 {
-;display.c,67 :: 		TR0_bit = 0;
-	CLR TR0_bit+0
-;display.c,69 :: 		TH0 = 0xF9;
-	MOV TH0+0, #249
-;display.c,70 :: 		TL0 = 0x7D;
-	MOV TL0+0, #125
-;display.c,74 :: 		Display_SetOutput(gMatrixRow[i], gMatrixRed[i], gMatrixGreen[i]);
-=======
 ;display.c,62 :: 		void Display_Refresh() iv IVT_ADDR_ET0 {
 ;display.c,65 :: 		TR0_bit = 0;
 	CLR TR0_bit+0
@@ -88,7 +53,6 @@ _Display_Refresh:
 ;display.c,68 :: 		TL0 = 0x7D;
 	MOV TL0+0, #125
 ;display.c,70 :: 		Display_SetOutput(gMatrixRow[i], gMatrixRed[i], gMatrixGreen[i]);
->>>>>>> a7b2ab055a0904672e9901c936656befca9b08ee
 	MOV A, Display_Refresh_i_L0+0
 	ADD A, #_gMatrixRow+0
 	MOV R1, A
@@ -110,21 +74,6 @@ _Display_Refresh:
 	MOV R0, A
 	MOV FARG_Display_SetOutput_green+0, @R0
 	LCALL _Display_SetOutput+0
-<<<<<<< HEAD
-;display.c,75 :: 		i++;
-	INC Display_Refresh_i_L0+0
-;display.c,77 :: 		if(i == 8){
-	MOV A, Display_Refresh_i_L0+0
-	XRL A, #8
-	JNZ L_Display_Refresh0
-;display.c,78 :: 		i = 0;
-	MOV Display_Refresh_i_L0+0, #0
-;display.c,79 :: 		}
-L_Display_Refresh0:
-;display.c,81 :: 		TR0_bit = 1;
-	SETB TR0_bit+0
-;display.c,82 :: 		}
-=======
 ;display.c,71 :: 		i++;
 	INC Display_Refresh_i_L0+0
 ;display.c,73 :: 		if(i == 8){
@@ -138,7 +87,6 @@ L_Display_Refresh0:
 ;display.c,77 :: 		TR0_bit = 1;
 	SETB TR0_bit+0
 ;display.c,78 :: 		}
->>>>>>> a7b2ab055a0904672e9901c936656befca9b08ee
 	POP 131
 	POP 130
 	POP B+0

@@ -22,11 +22,7 @@ unsigned char gMatrixGreen[8] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00}
 * RETURNS:  This function does not return value
 *************************************************************************************************/
 void Display_Init(){
-<<<<<<< HEAD
-    // set ports initial values
-=======
     // init ports
->>>>>>> a7b2ab055a0904672e9901c936656befca9b08ee
     mRowOutputPort = 0x00;
     mRedOutputPort = 0x00;
     mGreenOutputPort = 0x00;
@@ -47,11 +43,7 @@ void Display_Init(){
 * RETURNS:  This function does not return value
 *************************************************************************************************/
 void Display_SetOutput(unsigned char row, unsigned char red, unsigned char green){
-<<<<<<< HEAD
-    // turn off ports to avoid ghosts
-=======
     // turn of ports to avoid ghosts
->>>>>>> a7b2ab055a0904672e9901c936656befca9b08ee
     mRowOutputPort = 0x00;
     mRedOutputPort = 0x00;
     mGreenOutputPort = 0x00;

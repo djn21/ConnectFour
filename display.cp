@@ -23,17 +23,11 @@ void Display_Init(){
  TH0 = 0xF9;
  TL0 = 0x7D;
 
-
-
  IE |= 0x82;
 
  TR0_bit = 1;
 }
-<<<<<<< HEAD
-#line 47 "D:/Workspaces/MikroC/connectfour/display.c"
-=======
 #line 45 "D:/Workspaces/MikroC/connectfour/display.c"
->>>>>>> a7b2ab055a0904672e9901c936656befca9b08ee
 void Display_SetOutput(unsigned char row, unsigned char red, unsigned char green){
 
  mRowOutputPort = 0x00;
@@ -45,11 +39,7 @@ void Display_SetOutput(unsigned char row, unsigned char red, unsigned char green
 
  mRowOutputPort = row;
 }
-<<<<<<< HEAD
-#line 64 "D:/Workspaces/MikroC/connectfour/display.c"
-=======
 #line 62 "D:/Workspaces/MikroC/connectfour/display.c"
->>>>>>> a7b2ab055a0904672e9901c936656befca9b08ee
 void Display_Refresh() iv IVT_ADDR_ET0 {
  static unsigned char i = 0;
 
@@ -57,8 +47,6 @@ void Display_Refresh() iv IVT_ADDR_ET0 {
 
  TH0 = 0xF9;
  TL0 = 0x7D;
-
-
 
  Display_SetOutput(gMatrixRow[i], gMatrixRed[i], gMatrixGreen[i]);
  i++;
