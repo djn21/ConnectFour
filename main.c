@@ -33,7 +33,7 @@ void main() {
         do{
             // wait until 1...7  is pressed
             do{
-                keyIndex = Keypad_Key_Click();
+                keyIndex = Keypad_Key_Press();
                 key = keys[keyIndex];
             }while(key < '1' || key > '7');
             // insert disc
@@ -59,7 +59,7 @@ void main() {
                     startTime = Timer_Miliseconds();
                 }
                 // wait until D (new game) is pressed
-                keyIndex = Keypad_Key_Click();
+                keyIndex = Keypad_Key_Press();
                 key = keys[keyIndex];
             }while(key != 'D');
             // new game
