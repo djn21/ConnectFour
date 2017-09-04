@@ -15,7 +15,7 @@ void Init(){
     ConnectFour_Init();
 }
 
-void main() {
+void main(){
 
     char key;
     unsigned char keyIndex;
@@ -31,45 +31,53 @@ void main() {
     // repeat until die :)
     do{
         do{
-            // wait until 1...7  is pressed
+            // wait until 1...7  or D (new game) is pressed
             do{
-                keyIndex = Keypad_Key_Press();
+                keyIndex = Keypad_Key_Click();
                 key = keys[keyIndex];
-            }while(key < '1' || key > '7');
-            // insert disc
+            } while(key != 'D' && key < '1' || key > '7');
+            // if D (new game) is pressed
+            if(key == 'D'){
+                ConnectFour_NewGame();
+                break;
+            }
+            // if 1 to 7 pressed
             discInserted = ConnectFour_InsertDisc(key - 48);
-        } while(!discInserted);
-        // check winner
-        hasWinner = ConnectFour_CheckWinner();
-        // has winner
-        if(hasWinner){
-            startTime = Timer_Miliseconds();
-            do{
-                stopTime = Timer_Miliseconds();
-                // turn on winners discs  500 ms
-                if(stopTime - startTime < 500){
-                    ConnectFour_TurnWinnersDiscs(1);
-                }
-                // turn off winners discs 500 ms
-                else if(stopTime - startTime < 1000){
-                    ConnectFour_TurnWinnersDiscs(0);
-                }
-                // reset time
-                else{
-                    startTime = Timer_Miliseconds();
-                }
-                // wait until D (new game) is pressed
-                keyIndex = Keypad_Key_Press();
-                key = keys[keyIndex];
-            }while(key != 'D');
-            // new game
-            ConnectFour_NewGame();
+        }while(!discInserted);
+        // is not new game
+        if(key != 'D'){
+            // check winner
+            hasWinner = ConnectFour_CheckWinner();
+            // has winner
+            if(hasWinner){
+                startTime = Timer_Miliseconds();
+                do{
+                    stopTime = Timer_Miliseconds();
+                    // turn on winners discs  500 ms
+                    if(stopTime - startTime < 500){
+                        ConnectFour_TurnWinnersDiscs(1);
+                    }
+                    // turn off winners discs 500 ms
+                    else if(stopTime - startTime < 1000){
+                        ConnectFour_TurnWinnersDiscs(0);
+                    }
+                    // reset time
+                    else{
+                        startTime = Timer_Miliseconds();
+                    }
+                    // wait until D (new game) is pressed
+                    keyIndex = Keypad_Key_Click();
+                    key = keys[keyIndex];
+                }while(key != 'D');
+                // new game
+                ConnectFour_NewGame();
+            }
+            // has not winner
+            else{
+                // switch player
+                ConnectFour_SwitchPlayer();
+            }
         }
-        // has not winner
-        else {
-            // switch player
-            ConnectFour_SwitchPlayer();
-        }
-    } while(1);
+    }while(1);
 
 }
