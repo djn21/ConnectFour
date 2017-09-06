@@ -1,8 +1,8 @@
-#line 1 "D:/Workspaces/MikroC/connectfour/display.c"
-#line 1 "d:/workspaces/mikroc/connectfour/display.h"
-#line 16 "d:/workspaces/mikroc/connectfour/display.h"
+#line 1 "C:/Users/ETF/Desktop/connectfour-develop/display.c"
+#line 1 "c:/users/etf/desktop/connectfour-develop/display.h"
+#line 16 "c:/users/etf/desktop/connectfour-develop/display.h"
 void Display_Init();
-#line 10 "D:/Workspaces/MikroC/connectfour/display.c"
+#line 10 "C:/Users/ETF/Desktop/connectfour-develop/display.c"
 static char mRowOutputPort at P1;
 static char mRedOutputPort at P2;
 static char mGreenOutputPort at P3;
@@ -11,7 +11,7 @@ static char mGreenOutputPort at P3;
 const unsigned char gMatrixRow[8] = {0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80};
 unsigned char gMatrixRed[8] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
 unsigned char gMatrixGreen[8] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
-#line 24 "D:/Workspaces/MikroC/connectfour/display.c"
+#line 24 "C:/Users/ETF/Desktop/connectfour-develop/display.c"
 void Display_Init(){
 
  mRowOutputPort = 0x00;
@@ -27,7 +27,7 @@ void Display_Init(){
 
  TR0_bit = 1;
 }
-#line 45 "D:/Workspaces/MikroC/connectfour/display.c"
+#line 45 "C:/Users/ETF/Desktop/connectfour-develop/display.c"
 void Display_SetOutput(unsigned char row, unsigned char red, unsigned char green){
 
  mRowOutputPort = 0x00;
@@ -39,7 +39,7 @@ void Display_SetOutput(unsigned char row, unsigned char red, unsigned char green
 
  mRowOutputPort = row;
 }
-#line 62 "D:/Workspaces/MikroC/connectfour/display.c"
+#line 62 "C:/Users/ETF/Desktop/connectfour-develop/display.c"
 void Display_Refresh() iv IVT_ADDR_ET0 {
  static unsigned char i = 0;
 
