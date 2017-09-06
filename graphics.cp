@@ -1,26 +1,26 @@
-#line 1 "D:/Workspaces/MikroC/connectfour/graphics.c"
-#line 1 "d:/workspaces/mikroc/connectfour/graphics.h"
-#line 11 "d:/workspaces/mikroc/connectfour/graphics.h"
+#line 1 "C:/Users/ETF/Desktop/connectfour-develop/graphics.c"
+#line 1 "c:/users/etf/desktop/connectfour-develop/graphics.h"
+#line 11 "c:/users/etf/desktop/connectfour-develop/graphics.h"
 typedef enum Color{
  COLOR_BLACK,
  COLOR_RED,
  COLOR_GREEN,
  COLOR_YELLOW
 } Color;
-#line 24 "d:/workspaces/mikroc/connectfour/graphics.h"
+#line 24 "c:/users/etf/desktop/connectfour-develop/graphics.h"
 void Graphics_SetPixel(unsigned char row, unsigned char column, Color color);
-#line 32 "d:/workspaces/mikroc/connectfour/graphics.h"
+#line 32 "c:/users/etf/desktop/connectfour-develop/graphics.h"
 void Graphics_VerticalLine(unsigned char column, unsigned char rowStart,
  unsigned char rowEnd, Color color);
-#line 41 "d:/workspaces/mikroc/connectfour/graphics.h"
+#line 41 "c:/users/etf/desktop/connectfour-develop/graphics.h"
 void Graphics_HorizontalLine(unsigned char row, unsigned char columnStart,
  unsigned char columnEnd, Color color);
-#line 49 "d:/workspaces/mikroc/connectfour/graphics.h"
+#line 49 "c:/users/etf/desktop/connectfour-develop/graphics.h"
 void Graphics_ClearDisplay();
-#line 10 "D:/Workspaces/MikroC/connectfour/graphics.c"
+#line 10 "C:/Users/ETF/Desktop/connectfour-develop/graphics.c"
 extern unsigned char gMatrixRed[];
 extern unsigned char gMatrixGreen[];
-#line 19 "D:/Workspaces/MikroC/connectfour/graphics.c"
+#line 19 "C:/Users/ETF/Desktop/connectfour-develop/graphics.c"
 void Graphics_SetPixel(unsigned char row, unsigned char column, Color color){
  switch(color){
  case COLOR_BLACK:
@@ -41,7 +41,7 @@ void Graphics_SetPixel(unsigned char row, unsigned char column, Color color){
  break;
  }
 }
-#line 46 "D:/Workspaces/MikroC/connectfour/graphics.c"
+#line 46 "C:/Users/ETF/Desktop/connectfour-develop/graphics.c"
 void Graphics_VerticalLine(unsigned char column, unsigned char rowStart,
  unsigned char rowEnd, Color color){
  unsigned char row;
@@ -49,7 +49,7 @@ void Graphics_VerticalLine(unsigned char column, unsigned char rowStart,
  Graphics_SetPixel(row, column, color);
  }
 }
-#line 60 "D:/Workspaces/MikroC/connectfour/graphics.c"
+#line 60 "C:/Users/ETF/Desktop/connectfour-develop/graphics.c"
 void Graphics_HorizontalLine(unsigned char row, unsigned char columnStart,
  unsigned char columnEnd, Color color){
  unsigned char column;
@@ -57,7 +57,7 @@ void Graphics_HorizontalLine(unsigned char row, unsigned char columnStart,
  Graphics_SetPixel(row, column, color);
  }
 }
-#line 73 "D:/Workspaces/MikroC/connectfour/graphics.c"
+#line 73 "C:/Users/ETF/Desktop/connectfour-develop/graphics.c"
 void Graphics_ClearDisplay(){
  unsigned char i;
  for(i = 0; i < 8; i++){

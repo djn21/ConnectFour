@@ -35,7 +35,7 @@ void main(){
             do{
                 keyIndex = Keypad_Key_Click();
                 key = keys[keyIndex];
-            } while(key != 'D' && key < '1' || key > '7');
+            } while(key != 'D' && (key < '1' || key > '7'));
             // if D (new game) is pressed
             if(key == 'D'){
                 ConnectFour_NewGame();

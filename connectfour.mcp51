@@ -6,7 +6,7 @@ Value=0
 [BUILD_TYPE]
 Value=0
 [ACTIVE_TAB]
-Value=main.c
+Value=connectfour.c
 [USE_EEPROM]
 Value=0
 [EEPROM_DEFINITION]
@@ -43,13 +43,17 @@ Count=0
 [OTHER_FILES]
 Count=0
 [SEARCH_PATH]
-Count=3
-Path0=D:\Programs\MikroC\mikroC PRO for 8051\defs\
-Path1=D:\Workspaces\MikroC\connectfour\
-Path2=D:\Programs\MikroC\mikroC PRO for 8051\Uses\ATMEL\
+Count=6
+Path0=C:\Users\Public\Documents\Mikroelektronika\mikroC PRO for 8051\defs\
+Path1=C:\Users\Public\Documents\Mikroelektronika\mikroC PRO for 8051\Uses\ATMEL\
+Path2=C:\Users\ETF\Desktop\connectfour-develop\
+Path3=D:\Programs\MikroC\mikroC PRO for 8051\defs\
+Path4=D:\Workspaces\MikroC\connectfour\
+Path5=D:\Programs\MikroC\mikroC PRO for 8051\Uses\ATMEL\
 [HEADER_PATH]
-Count=1
+Count=2
 Path0=D:\Workspaces\MikroC\connectfour\
+Path1=C:\Users\ETF\Desktop\connectfour-develop\
 [HEADERS]
 Count=4
 File0=connectfour.h

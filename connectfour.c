@@ -19,7 +19,7 @@ static unsigned char mWinnersDiscsPosition[4][2] = {{0, 0}, {0, 0}, {0, 0}, {0, 
                                           
 static unsigned char mCurrentPlayerColor;
 
-static unsigned char mDiscXPostition, mDiscYPosition;
+static unsigned char mDiscXPosition, mDiscYPosition;
 
 /*************************************************************************************************
 * DOES:     Initialize connectfour
@@ -60,7 +60,7 @@ unsigned char ConnectFour_InsertDisc(unsigned char column){
     for(i = 5; i >= 0; i--){
         if(mGameMatrix[i][column - 1] == COLOR_BLACK){
             mGameMatrix[i][column - 1] = mCurrentPlayerColor;
-            mDiscXPostition = i;
+            mDiscXPosition = i;
             mDiscYPosition = column - 1;
             break;
         }
@@ -86,13 +86,13 @@ unsigned char ConnectFour_InsertDisc(unsigned char column){
 * RETURNS:  Returns 1 if somone wins the game, or 0 if not
 *************************************************************************************************/
 unsigned char ConnectFour_CheckWinner(){
-    unsigned char i;
-    unsigned char j;
+    signed char i;
+    signed char j;
     unsigned char hits = 0;
     // check x axis left
     for(j = mDiscYPosition; j >= 0; j--){
-        if(mGameMatrix[mDiscXPostition][j] == mCurrentPlayerColor){
-            mWinnersDiscsPosition[hits][0] = mDiscXPostition;
+        if(mGameMatrix[mDiscXPosition][j] == mCurrentPlayerColor){
+            mWinnersDiscsPosition[hits][0] = mDiscXPosition;
             mWinnersDiscsPosition[hits][1] = j;
             if(++hits == 4){
                 return 1;
@@ -103,8 +103,8 @@ unsigned char ConnectFour_CheckWinner(){
     }
     // check x axis right
     for(j = mDiscYPosition + 1; j < 7; j++){
-        if(mGameMatrix[mDiscXPostition][j] == mCurrentPlayerColor){
-            mWinnersDiscsPosition[hits][0] = mDiscXPostition;
+        if(mGameMatrix[mDiscXPosition][j] == mCurrentPlayerColor){
+            mWinnersDiscsPosition[hits][0] = mDiscXPosition;
             mWinnersDiscsPosition[hits][1] = j;
             if(++hits == 4){
                 return 1;
@@ -116,7 +116,7 @@ unsigned char ConnectFour_CheckWinner(){
     // reset hits
     hits = 0;
     // check d1 left
-    for(i = mDiscXPostition, j = mDiscYPosition; i < 6 && j >= 0; i++, j--){
+    for(i = mDiscXPosition, j = mDiscYPosition; i < 6 && j >= 0; i++, j--){
         if(mGameMatrix[i][j] == mCurrentPlayerColor){
             mWinnersDiscsPosition[hits][0] = i;
             mWinnersDiscsPosition[hits][1] = j;
@@ -128,7 +128,7 @@ unsigned char ConnectFour_CheckWinner(){
         }
     }
     // check d1 right
-    for(i = mDiscXPostition - 1, j = mDiscYPosition + 1; i >= 0 && j < 7; i--, j++){
+    for(i = mDiscXPosition - 1, j = mDiscYPosition + 1; i >= 0 && j < 7; i--, j++){
         if(mGameMatrix[i][j] == mCurrentPlayerColor){
             mWinnersDiscsPosition[hits][0] = i;
             mWinnersDiscsPosition[hits][1] = j;
@@ -142,7 +142,7 @@ unsigned char ConnectFour_CheckWinner(){
     // reset hits
     hits = 0;
     // check d2 left
-    for(i = mDiscXPostition, j = mDiscYPosition; i >= 0 && j >= 0; i--, j--){
+    for(i = mDiscXPosition, j = mDiscYPosition; i >= 0 && j >= 0; i--, j--){
         if(mGameMatrix[i][j] == mCurrentPlayerColor){
             mWinnersDiscsPosition[hits][0] = i;
             mWinnersDiscsPosition[hits][1] = j;
@@ -154,7 +154,7 @@ unsigned char ConnectFour_CheckWinner(){
         }
     }
     // check d2 right
-    for(i = mDiscXPostition + 1, j = mDiscYPosition + 1; i < 6 && j < 7; i++, j++){
+    for(i = mDiscXPosition + 1, j = mDiscYPosition + 1; i < 6 && j < 7; i++, j++){
         if(mGameMatrix[i][j] == mCurrentPlayerColor){
             mWinnersDiscsPosition[hits][0] = i;
             mWinnersDiscsPosition[hits][1] = j;
@@ -168,7 +168,7 @@ unsigned char ConnectFour_CheckWinner(){
     // reset hits
     hits = 0;
     // check y axis down
-    for(i = mDiscXPostition; i < 6; i++){
+    for(i = mDiscXPosition; i < 6; i++){
         if(mGameMatrix[i][mDiscYPosition] == mCurrentPlayerColor){
             mWinnersDiscsPosition[hits][0] = i;
             mWinnersDiscsPosition[hits][1] = mDiscYPosition;
