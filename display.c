@@ -1,8 +1,12 @@
 /*************************************************************************************************
-* MODULE:    DISPLAY
-* CONTAINS:  Functions for working with display
-* COPYRIGHT: Faculty of Electrical Engineering - www.etf.unibl.org
-* VERSION:   1.0, 09-AUG-17
+* @brief    Functions for working with display
+* @file     display.c
+* @author   Dejan Djekanovic
+* @date     09 Aug 2017
+* @version  1.0
+*
+* This source file contains functions for working with display. It's possible to initialize
+* display, set output display ports and refresh display content.
 *************************************************************************************************/
 
 #include <display.h>
@@ -17,9 +21,12 @@ unsigned char gMatrixRed[8] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
 unsigned char gMatrixGreen[8] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
 
 /*************************************************************************************************
-* DOES:     Initialize display
-* GLOBALS:  This function does not read or write global variables
-* RETURNS:  This function does not return value
+* @brief    Initializes display
+*
+* The function sets output ports to 0, configures and starts timer which used to refresh display.
+*
+* @return   This function does not return value
+* @note     Modify @p mRowOutputPort, @p mRedOutputPort, @p mGreenOutputPort
 *************************************************************************************************/
 void Display_Init(){
     // init ports
@@ -38,12 +45,19 @@ void Display_Init(){
 }
 
 /*************************************************************************************************
-* DOES:     Set display rows and colors matrix
-* GLOBALS:  Modify gMatrixRow, gMatrixRed, gMatrixGreen
-* RETURNS:  This function does not return value
+* @brief    Sets display rows and colors matrix
+*
+* The function turns off all ports to avoid ghosts, then sets output ports to appropriate
+* values.
+*
+* @param    row      Output value for row
+* @param    red      Output value for red color
+* @param    green    Output value for green color
+* @return   This function does not return value
+* @note     Modify @p mRowOutputPort, @p mRedOutputPort, @p mGreenOutputPort
 *************************************************************************************************/
 void Display_SetOutput(unsigned char row, unsigned char red, unsigned char green){
-    // turn of ports to avoid ghosts
+    // turn off ports to avoid ghosts
     mRowOutputPort = 0x00;
     mRedOutputPort = 0x00;
     mGreenOutputPort = 0x00;
@@ -55,9 +69,12 @@ void Display_SetOutput(unsigned char row, unsigned char red, unsigned char green
 }
 
 /*************************************************************************************************
-* DOES:     Refresh display
-* GLOBALS:  Reads gMatrixRow, gMatrixRed, gMatrixGreen
-* RETURNS:  This function does not return value
+* @brief    Refreshes display
+*
+* The function is interrupt routine which refreshes the display every 2 miliseconds.
+*
+* @return   This function does not return value
+* @note     Reads @p gMatrixRow, @p gMatrixRed, @p gMatrixGreen
 *************************************************************************************************/
 void Display_Refresh() iv IVT_ADDR_ET0 {
     static unsigned char i = 0;

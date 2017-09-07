@@ -1,8 +1,12 @@
 /*************************************************************************************************
-* MODULE:    GRAPHICS
-* CONTAINS:  Functions for working with graphic elements
-* COPYRIGHT: Faculty of Electrical Engineering - www.etf.unibl.org
-* VERSION:   1.0, 09-AUG-17
+* @brief    Functions for working with graphics elements
+* @file     graphics.c
+* @author   Dejan Djekanovic
+* @date     09 Aug 2017
+* @version  1.0
+*
+* This source file contains functions for working with graphics elements. It's possible to set
+* a pixel to one of the colors, draw horizontal or vertical line and clear entire display.
 *************************************************************************************************/
 
 #include <graphics.h>
@@ -11,10 +15,16 @@ extern unsigned char gMatrixRed[];
 extern unsigned char gMatrixGreen[];
 
 /*************************************************************************************************
-* DOES:     Sets the pixel of row and column to color specified
-* GLOBALS:  Modify gMatrixRed, gMatrixGreen
-* LIMITS:   Parameters row and column must be between 0 and 7
-* RETURNS:  This function does not return value
+* @brief    Sets the pixel of row and column to color specified
+*
+* The function sets video memory depends on @p row, @p column and @p color values.
+*
+* @param    row       Discs row
+* @param    column    Discs column
+* @param    color     Discs color
+* @return   This function does not return value
+* @note     Modify @p gMatrixRed, @p gMatrixGreen
+* @warning  Parameters @p row and @p column must be between 0 and 7
 *************************************************************************************************/
 void Graphics_SetPixel(unsigned char row, unsigned char column, Color color){
     switch(color){
@@ -38,10 +48,16 @@ void Graphics_SetPixel(unsigned char row, unsigned char column, Color color){
 }
 
 /*************************************************************************************************
-* DOES:     Draw a vertical line on a given column from rowStart to rowEnd
-* GLOBALS:  This function does not read or write global variables
-* LIMITS:   Parameters column, rowStart and rowEnd must be between 0 and 7
-* RETURNS:  This function does not return value
+* @brief    Draws a vertical line on a given column from rowStart to rowEnd
+*
+* The function draws a vertical line on a given @p column from @p rowStart to @p rowEnd.
+*
+* @param    column      Lines column
+* @param    rowStart    Lines start row
+* @param    rowEnd      Lines end row
+* @retuen   This function does not return value
+* @warning  Parameters @p column, @p rowStart and @p rowEnd must be between 0 and 7, and 
+*           @p rowStart must be less then @p rowEnd
 *************************************************************************************************/
 void Graphics_VerticalLine(unsigned char column, unsigned char rowStart,
                            unsigned char rowEnd, Color color){
@@ -52,10 +68,16 @@ void Graphics_VerticalLine(unsigned char column, unsigned char rowStart,
 }
 
 /*************************************************************************************************
-* DOES:     Draw a horizontal line on a given row form columnStar to columnEnd
-* GLOBALS:  This function does not read or write global variables
-* LIMITS:   Parameters row, columnStart and columnEnd must be between 0 and 7
-* RETURNS:  This function does not return value
+* @brief    Draws a horizontal line on a given row form columnStar to columnEnd
+*
+* The function draws a horizontal line on a given @p row from @p columnStart to @p columnEnd.
+*
+* @param    row            Lines row
+* @param    columnStart    Lines start column
+* @param    columnEnd      Lines end column
+* @return   This function does not return value
+* @warning  Parameters @p row, @p columnStart and @p columnEnd must be between 0 and 7, and
+*           @p columnStart must be less then @p columnEnd
 *************************************************************************************************/
 void Graphics_HorizontalLine(unsigned char row, unsigned char columnStart, 
                              unsigned char columnEnd, Color color){
@@ -66,9 +88,12 @@ void Graphics_HorizontalLine(unsigned char row, unsigned char columnStart,
 }
 
 /*************************************************************************************************
-* DOES:     Clear display
-* GLOBALS:  Modify gMatrixRed, gMatrixGreen
-* RETURNS:  This function does not return value
+* @brief    Clears display
+*
+* The function clears display, sets video memory @p gMatrixRed and @p gMatrixGreen to 0.
+*
+* @return   This function does not return value
+* @note     Modify @p gMatrixRed, @p gMatrixGreen
 *************************************************************************************************/
 void Graphics_ClearDisplay(){
     unsigned char i;

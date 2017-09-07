@@ -1,8 +1,12 @@
 /*************************************************************************************************
-* MODULE:    TIMER
-* CONTAINS:  Functions for working with time
-* COPYRIGHT: Faculty of Electrical Engineering - www.etf.unibl.org
-* VERSION:   1.0, 09-AUG-17
+* @brief    Functions for working with time
+* @file     timer.c
+* @author   Dejan Djekanovic
+* @date     09 Aug 2017
+* @version  1.0
+*
+* This source file contains functions for workink with time. It's possible to initialize timer,
+* get current miliseconds and refresh timer value.
 *************************************************************************************************/
 
 #include <timer.h>
@@ -10,9 +14,13 @@
 static unsigned long mMiliseconds;
 
 /*************************************************************************************************
-* DOES:     Initialize and start timer
-* GLOBALS:  Modify mMiliseconds
-* RETURNS:  This function does not return value
+* @brief    Initialize and start timer
+*
+* The function sets current time to 0, configures and starts timer which used to refresh current
+* time.
+*
+* @return   This function does not return value
+* @note     Modify @p mMiliseconds
 *************************************************************************************************/
 void Timer_Init(){
     mMiliseconds = 0;
@@ -28,18 +36,24 @@ void Timer_Init(){
 }
 
 /*************************************************************************************************
-* DOES:     Returns current miliseconds from start of timer
-* GLOBALS:  Reads mMiliseconds. Does not modify mMiliseconds
-* RETURNS:  Curent miliseconds form start of timer
+* @brief    Returns current miliseconds from start of timer
+*
+* The function return current miliseconds from start of timer.
+*
+* @return   Curent miliseconds form start of timer
+* @note     Reads @p mMiliseconds
 *************************************************************************************************/
 unsigned long Timer_Miliseconds(){
     return mMiliseconds;
 }
 
 /*************************************************************************************************
-* DOES:     Increment current time every milisecond
-* GLOBALS:  Modify mMiliseconds
-* RETURNS:  This function does not return value
+* @breif    Increases current time every milisecond
+*
+* The function is interrupt routine which increases current time evry milisecond.
+*
+* @return   This function does not return value
+* @note     Modify @p mMiliseconds
 *************************************************************************************************/
 void Timer_Tick() iv IVT_ADDR_ET1 {
     // stop timer
@@ -47,7 +61,7 @@ void Timer_Tick() iv IVT_ADDR_ET1 {
     // reset timer values to get interrupt at 1 ms
     TH1 = 0xFC;
     TL1 = 0xBE;
-    // set count
+    // set current miliseconds
     mMiliseconds++;
     // start timer
     TR1_bit = 1;
