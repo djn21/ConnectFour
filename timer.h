@@ -1,25 +1,34 @@
-/*************************************************************************************************
-* MODULE:    TIMER
-* CONTAINS:  Functions for working with time
-* COPYRIGHT: Faculty of Electrical Engineering - www.etf.unibl.org
-* VERSION:   1.0 09-AUG-17
-*************************************************************************************************/
+/**
+* @file     timer.c
+* @author   Dejan Djekanovic
+* @date     09 Aug 2017
+* @version  1.0
+* @brief    This source file contains functions for working with time.
+* It's possible to initialize timer, get current miliseconds and refresh timer value.
+*/
 
 #ifndef _TIMER_H_
 #define _TIMER_H_
 
-/*************************************************************************************************
-* DOES: Initialize and start timer
-* GLOBALS: Modify mMiliseconds
-* RETURNS: This function does not return value
-*************************************************************************************************/
+/**
+* @brief    Initialize and start timer
+*
+* The function sets current time to 0, configures and starts timer which used to refresh current
+* time.
+*
+* @return   This function does not return value
+* @note     Modify @p mMiliseconds
+*/
 void Timer_Init();
 
-/*************************************************************************************************
-* DOES: Returns current miliseconds from start of timer
-* GLOBALS: Reads mMiliseconds. Does not modify mMiliseconds
-* RETURNS: Curent miliseconds form start of timer
-*************************************************************************************************/
+/**
+* @brief    Returns current miliseconds from start of timer
+*
+* The function return current miliseconds from start of timer.
+*
+* @return   Curent miliseconds form start of timer
+* @note     Reads @p mMiliseconds
+*/
 unsigned long Timer_Miliseconds();
 
 #endif

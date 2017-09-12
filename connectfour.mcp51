@@ -34,8 +34,8 @@ File3=connectfour.h
 File4=graphics.h
 File5=graphics.c
 File6=display.c
-File7=display.h
-File8=timer.c
+File7=timer.c
+File8=display.h
 [EEPROM]
 Count=0
 [ACTIVE_COMMENTS_FILES]
@@ -44,11 +44,11 @@ Count=0
 Count=0
 [SEARCH_PATH]
 Count=6
-Path0=C:\Users\Public\Documents\Mikroelektronika\mikroC PRO for 8051\defs\
-Path1=C:\Users\Public\Documents\Mikroelektronika\mikroC PRO for 8051\Uses\ATMEL\
-Path2=C:\Users\ETF\Desktop\connectfour-develop\
-Path3=D:\Programs\MikroC\mikroC PRO for 8051\defs\
-Path4=D:\Workspaces\MikroC\connectfour\
+Path0=D:\Programs\MikroC\mikroC PRO for 8051\defs\
+Path1=D:\Workspaces\MikroC\connectfour\
+Path2=C:\Users\Public\Documents\Mikroelektronika\mikroC PRO for 8051\defs\
+Path3=C:\Users\Public\Documents\Mikroelektronika\mikroC PRO for 8051\Uses\ATMEL\
+Path4=C:\Users\ETF\Desktop\connectfour-develop\
 Path5=D:\Programs\MikroC\mikroC PRO for 8051\Uses\ATMEL\
 [HEADER_PATH]
 Count=2

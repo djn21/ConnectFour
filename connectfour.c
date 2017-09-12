@@ -1,9 +1,13 @@
-/*************************************************************************************************
-* MODULE:    CONNECTFOUR
-* CONTAINS:  Functions for abstracting connectfour game
-* COPYRIGHT: Faculty of Electrical Engineering - www.etf.unibl.org
-* VERSION:   1.0, 09-AUG-17
-*************************************************************************************************/
+/**
+* @file     connectfour.c
+* @author   Dejan Djekanovic
+* @date     09 Aug 2017
+* @version  1.0
+* @brief    This source file contains functions for abstracting connectfour game.
+* It's possible to initialize connect four game, insert disc in appropriate column, switch
+* between red and green player, check if one of players wins the game, turn on or off winners
+* discs and start new game.
+*/
 
 #include <connectfour.h>
 #include <graphics.h>
@@ -21,22 +25,30 @@ static unsigned char mCurrentPlayerColor;
 
 static unsigned char mDiscXPosition, mDiscYPosition;
 
-/*************************************************************************************************
-* DOES:     Initialize connectfour
-* GLOBALS:  Modify mCurrentPlayerColor
-* RETURNS:  This function does not return value
-*************************************************************************************************/
+/**
+* @brief    Initializes connectfour
+*
+* The function sets the color of the current player and draws a horizontal line showing which 
+* player is on the move.
+*
+* @return   This function does not return value
+* @note     Modify @p mCurrentPlayerColor
+*/
 void ConnectFour_Init(){
     // set player
     mCurrentPlayerColor = COLOR_RED;
     Graphics_HorizontalLine(7, 0, 7, COLOR_RED);
 }
 
-/*************************************************************************************************
-* DOES:     Swiching between red and green player
-* GLOBALS:  Modify mCurrentPlayerColor
-* RETURNS:  This function does not return value
-*************************************************************************************************/
+/**
+* @brief    Switches between red and green player
+*
+* The function checks if current player color is red or green and changes value of
+* @p mCurrentPlayerColor to color of another player.
+*
+* @return   This function does not return value
+* @note     Modify @p mCurrentPlayerColor
+*/
 void ConnectFour_SwitchPlayer(){
     if(mCurrentPlayerColor == COLOR_RED){
         mCurrentPlayerColor = COLOR_GREEN;
@@ -47,12 +59,18 @@ void ConnectFour_SwitchPlayer(){
     }
 }
 
-/*************************************************************************************************
-* DOES:     Insert disc in the appropriate column
-* GLOBALS:  Reads mCurrentPlayerColor. Modify mGameMatrix, mDiscXPosition, mDiscYPosition
-* LIMITS:   Parameter column must be between 1 and 7
-* RETURNS:  Returns 1 if disc inserted successfully, or 0 if not
-*************************************************************************************************/
+/**
+* @brief    Inserts disc into the appropriate column
+*
+* The function iserts the disc into @p mGameMatrix, then simulates insertion of the disc into 
+* the display. Finnaly, it checks if the disc is inserted successfully.
+*
+* @param    column    Disc column
+* @return   Returns 1 if disc inserted successfully, 0 otherwise
+* @note     Reads @p mCurrentPlayerColor and modify @p mGameMatrix, @p mDiscXPosition,
+*           @p mDiscYPosition
+* @warning  Parameter @p column must be between 1 and 7
+*/
 unsigned char ConnectFour_InsertDisc(unsigned char column){
     signed char i;
     signed char j;
@@ -80,11 +98,15 @@ unsigned char ConnectFour_InsertDisc(unsigned char column){
     }
 }
 
-/*************************************************************************************************
-* DOES:     Check for winner
-* GLOBALS:  Reads mGameMatrix, mCurrentPlayerColor. Modify mWinnersDiscsPosition
-* RETURNS:  Returns 1 if somone wins the game, or 0 if not
-*************************************************************************************************/
+/**
+* @brief    Checks for winner
+*
+* The function cheks if current player has four disc connected together. The discs can be 
+* connected by x or y axis, or by both of diagonales.
+*
+* @return   Returns 1 if somone wins the game, or 0 otherwise
+* @note     Reads @p mGameMatrix, @p mCurrentPlayerColor and modify @p mWinnersDiscsPosition
+*/
 unsigned char ConnectFour_CheckWinner(){
     signed char i;
     signed char j;
@@ -182,12 +204,15 @@ unsigned char ConnectFour_CheckWinner(){
     return 0;
 }
 
-/*************************************************************************************************
-* DOES:     Turn ON or OFF winners discs
-* GLOBALS:  Reads mCurrentPlayerColor, mWinnersDiscsPosition
-* LIMITS:   Parameter onOff must be 1 for ON or 0 for OFF
-* RETURNS:  This function does not return value
-*************************************************************************************************/
+/**
+* @brief     Turns ON or OFF winners discs
+*
+* The function turns off winners discs if @p onOff is 0, turns on otherwise.
+*
+* @param    onOff    Set 0 to turn off discs, 1 otherwise
+* @return   This function does not return value
+* @note     Reads @p mCurrentPlayerColor, @p mWinnersDiscsPosition
+*/
 void ConnectFour_TurnWinnersDiscs(unsigned char onOff){
     unsigned char i;
     // turn winners discs on
@@ -206,11 +231,15 @@ void ConnectFour_TurnWinnersDiscs(unsigned char onOff){
     }
 }
 
-/*************************************************************************************************
-* DOES:     Start new game
-* GLOBALS:  Modify mGameMatrix, mWinnersDiscsPosition
-* RETURNS:  This function does not return value
-*************************************************************************************************/
+/**
+* @brief    Starts new game
+*
+* The function sets values of @p mGameMatrix and @p mWinnersDiscsPosition to 0, clears display
+* and initializes connecfour game.
+*
+* @return   This function does not return value
+* @note     Modify @p mGameMatrix, @p mWinnersDiscsPosition
+*/
 void ConnectFour_NewGame(){
     unsigned char i;
     unsigned char j;
