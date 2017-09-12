@@ -1,14 +1,13 @@
-/*************************************************************************************************
-* @brief    Functions for abstracting connectfour game
+/**
 * @file     connectfour.c
 * @author   Dejan Djekanovic
 * @date     09 Aug 2017
 * @version  1.0
-*
-* This source file contains functions for abstracting connectfour game. It's possible to
-* initialize connect four game, insert disc in appropriate column, switch between red and green
-* player, check if one of players wins the game, turn on or off winners discs and start new game.
-*************************************************************************************************/
+* @brief    This source file contains functions for abstracting connectfour game.
+* It's possible to initialize connect four game, insert disc in appropriate column, switch
+* between red and green player, check if one of players wins the game, turn on or off winners
+* discs and start new game.
+*/
 
 #include <connectfour.h>
 #include <graphics.h>
@@ -26,7 +25,7 @@ static unsigned char mCurrentPlayerColor;
 
 static unsigned char mDiscXPosition, mDiscYPosition;
 
-/*************************************************************************************************
+/**
 * @brief    Initializes connectfour
 *
 * The function sets the color of the current player and draws a horizontal line showing which 
@@ -34,14 +33,14 @@ static unsigned char mDiscXPosition, mDiscYPosition;
 *
 * @return   This function does not return value
 * @note     Modify @p mCurrentPlayerColor
-*************************************************************************************************/
+*/
 void ConnectFour_Init(){
     // set player
     mCurrentPlayerColor = COLOR_RED;
     Graphics_HorizontalLine(7, 0, 7, COLOR_RED);
 }
 
-/*************************************************************************************************
+/**
 * @brief    Switches between red and green player
 *
 * The function checks if current player color is red or green and changes value of
@@ -49,7 +48,7 @@ void ConnectFour_Init(){
 *
 * @return   This function does not return value
 * @note     Modify @p mCurrentPlayerColor
-*************************************************************************************************/
+*/
 void ConnectFour_SwitchPlayer(){
     if(mCurrentPlayerColor == COLOR_RED){
         mCurrentPlayerColor = COLOR_GREEN;
@@ -60,18 +59,18 @@ void ConnectFour_SwitchPlayer(){
     }
 }
 
-/*************************************************************************************************
+/**
 * @brief    Inserts disc into the appropriate column
 *
 * The function iserts the disc into @p mGameMatrix, then simulates insertion of the disc into 
 * the display. Finnaly, it checks if the disc is inserted successfully.
 *
-* @param    column    Discs column
+* @param    column    Disc column
 * @return   Returns 1 if disc inserted successfully, 0 otherwise
 * @note     Reads @p mCurrentPlayerColor and modify @p mGameMatrix, @p mDiscXPosition,
 *           @p mDiscYPosition
 * @warning  Parameter @p column must be between 1 and 7
-*************************************************************************************************/
+*/
 unsigned char ConnectFour_InsertDisc(unsigned char column){
     signed char i;
     signed char j;
@@ -99,7 +98,7 @@ unsigned char ConnectFour_InsertDisc(unsigned char column){
     }
 }
 
-/*************************************************************************************************
+/**
 * @brief    Checks for winner
 *
 * The function cheks if current player has four disc connected together. The discs can be 
@@ -107,7 +106,7 @@ unsigned char ConnectFour_InsertDisc(unsigned char column){
 *
 * @return   Returns 1 if somone wins the game, or 0 otherwise
 * @note     Reads @p mGameMatrix, @p mCurrentPlayerColor and modify @p mWinnersDiscsPosition
-*************************************************************************************************/
+*/
 unsigned char ConnectFour_CheckWinner(){
     signed char i;
     signed char j;
@@ -205,15 +204,15 @@ unsigned char ConnectFour_CheckWinner(){
     return 0;
 }
 
-/*************************************************************************************************
-* @brif     Turns ON or OFF winners discs
+/**
+* @brief     Turns ON or OFF winners discs
 *
 * The function turns off winners discs if @p onOff is 0, turns on otherwise.
 *
 * @param    onOff    Set 0 to turn off discs, 1 otherwise
 * @return   This function does not return value
 * @note     Reads @p mCurrentPlayerColor, @p mWinnersDiscsPosition
-*************************************************************************************************/
+*/
 void ConnectFour_TurnWinnersDiscs(unsigned char onOff){
     unsigned char i;
     // turn winners discs on
@@ -232,7 +231,7 @@ void ConnectFour_TurnWinnersDiscs(unsigned char onOff){
     }
 }
 
-/*************************************************************************************************
+/**
 * @brief    Starts new game
 *
 * The function sets values of @p mGameMatrix and @p mWinnersDiscsPosition to 0, clears display
@@ -240,7 +239,7 @@ void ConnectFour_TurnWinnersDiscs(unsigned char onOff){
 *
 * @return   This function does not return value
 * @note     Modify @p mGameMatrix, @p mWinnersDiscsPosition
-*************************************************************************************************/
+*/
 void ConnectFour_NewGame(){
     unsigned char i;
     unsigned char j;
